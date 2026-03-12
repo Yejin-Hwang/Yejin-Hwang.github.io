@@ -99,7 +99,7 @@
   /* PHOTO */
   .hero-right{position:relative;z-index:1;display:flex;justify-content:center}
   .photo-wrap{position:relative;display:inline-block;background:transparent}
-  .photo-img{width:300px;height:360px;object-fit:cover;object-position:center top;border-radius:16px;display:block;filter:none;background:transparent;}
+  .photo-img{width:300px;height:auto;object-fit:contain;border-radius:16px;display:block;background:transparent;}
   .photo-info{
     margin-top:1.2rem;
     background:var(--white);border:1px solid var(--border);
@@ -459,12 +459,12 @@
     <a href="https://github.com/Yejin-Hwang" target="_blank" class="clink"><div class="cicon">gh</div>github.com/Yejin-Hwang</a>
     <a href="https://github.com/Yejin-Hwang/Yejin-Hwang/raw/main/CV_yejin_hwang_March_2026.pdf" target="_blank" class="clink"><div class="cicon">↓</div>Download Resume</a>
   </div>
-  <div class="form2 fade">
-    <div><label>Name</label><input type="text" placeholder="Your name"/></div>
-    <div><label>Email</label><input type="email" placeholder="your@email.com"/></div>
-    <div><label>Message</label><textarea placeholder="Tell me about your project or opportunity..."></textarea></div>
-    <button class="btn-submit2">Send Message →</button>
-  </div>
+  <form class="form2 fade" action="https://formspree.io/f/xvzwaljz" method="POST">
+    <div><label>Name</label><input type="text" name="name" placeholder="Your name" required/></div>
+    <div><label>Email</label><input type="email" name="email" placeholder="your@email.com" required/></div>
+    <div><label>Message</label><textarea name="message" placeholder="Tell me about your project or opportunity..." required></textarea></div>
+    <button type="submit" class="btn-submit2">Send Message →</button>
+  </form>
 </section>
 
 <footer>
