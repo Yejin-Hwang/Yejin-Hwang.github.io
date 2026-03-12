@@ -114,7 +114,8 @@
   .photo-name{font-family:'Fraunces',serif;font-size:1rem;font-weight:400;color:var(--dark)}
   .photo-role{font-size:.7rem;color:var(--sage);font-weight:500;margin-top:.2rem}
 
-  /* STATS */
+  .hs-link{text-decoration:none;color:inherit;transition:background .2s,transform .15s}
+  .hs-link:hover{background:var(--sage-pale);transform:translateY(-2px);cursor:pointer}
   .hero-stats{
     display:grid;grid-template-columns:repeat(3,1fr);
     gap:1px;background:var(--border);margin-top:60px;
@@ -348,7 +349,7 @@
     </div>
     <div class="hero-stats">
       <div class="hs"><span class="hs-n">4.0</span><span class="hs-l">GPA</span></div>
-      <div class="hs"><span class="hs-n">🏅</span><span class="hs-l">SKKU President Award</span></div>
+      <a href="https://www.skku.edu/skku/campus/skk_comm/popup_news_en.do?mode=view&articleNo=101892" target="_blank" class="hs hs-link"><span class="hs-n">🏅</span><span class="hs-l">SKKU President Award</span></a>
       <div class="hs"><span class="hs-n">KDD'26</span><span class="hs-l">Under Review</span></div>
     </div>
   </div>
@@ -373,7 +374,7 @@
       <p>I thrive at the intersection of rigorous statistical methodology and practical ML engineering — building systems that are both theoretically sound and production-ready.</p>
     </div>
     <div class="about-cards">
-      <div class="about-card fade"><div class="card-icon">🏅</div><div class="card-body"><div class="card-title">SKKU President Award</div><div class="card-sub">1st Place R&D Innovation — methane-reducing functional gum. ₩2M prize, graduation evaluation waived.</div></div></div>
+      <a href="https://www.skku.edu/skku/campus/skk_comm/popup_news_en.do?mode=view&articleNo=101892" target="_blank" class="about-card fade" style="text-decoration:none;color:inherit;cursor:pointer"><div class="card-icon">🏅</div><div class="card-body"><div class="card-title">SKKU President Award</div><div class="card-sub">1st Place R&D Innovation — methane-reducing functional gum. ₩2M prize, graduation evaluation waived.</div></div></a>
       <div class="about-card fade"><div class="card-icon">📄</div><div class="card-body"><div class="card-title">KDD 2026 Submission</div><div class="card-sub">Multimodal financial forecasting paper under review at ACM SIGKDD 2026 in Jeju, Korea.</div></div></div>
       <div class="about-card fade"><div class="card-icon">🎤</div><div class="card-body"><div class="card-title">Conference Presentations</div><div class="card-sub">Coastal Bend Conference (2025) and NMSU Workshop (2025) — stock forecasting research.</div></div></div>
       <div class="about-card fade"><div class="card-icon">🔬</div><div class="card-body"><div class="card-title">Samsung Medical Center</div><div class="card-sub">Clinical data research on oncological & rare disease datasets with Johns Hopkins PIs.</div></div></div>
