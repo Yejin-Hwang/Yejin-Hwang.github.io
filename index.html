@@ -171,11 +171,25 @@ h2{
 /* PROJECTS */
 .project-list{display:flex;flex-direction:column;gap:1.2rem}
 .pcard{
-  background:var(--white);border:1.5px solid var(--border);border-radius:10px;padding:1.6rem;
-  text-decoration:none;color:inherit;display:block;
+  background:var(--white);border:1.5px solid var(--border);border-radius:10px;
+  text-decoration:none;color:inherit;display:grid;
+  grid-template-columns:1fr;
   transition:border-color .25s,transform .2s,box-shadow .25s;
 }
+.pcard.has-img{grid-template-columns:1fr 200px}
 .pcard:hover{border-color:var(--accent-light);transform:translateY(-2px);box-shadow:0 6px 24px rgba(74,122,64,.1)}
+.pcard-body{padding:1.6rem}
+.pcard-img{
+  border-radius:0 8px 8px 0;
+  overflow:hidden;
+  min-height:160px;
+}
+.pcard-img img{
+  width:100%;height:100%;object-fit:cover;
+  display:block;
+  transition:transform .3s;
+}
+.pcard:hover .pcard-img img{transform:scale(1.04)}
 .ptag{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:.6rem}
 .pname{font-family:'DM Serif Display',serif;font-size:1.15rem;font-weight:400;color:var(--dark);margin-bottom:.5rem}
 .pdesc{font-size:.78rem;color:var(--muted);line-height:1.8;margin-bottom:.9rem}
@@ -277,6 +291,8 @@ footer a:hover{color:var(--accent)}
   .certs-grid{grid-template-columns:1fr}
   .skills-grid{grid-template-columns:1fr}
   .exp-meta{border-left:3px solid var(--accent);padding-left:.8rem}
+  .pcard.has-img{grid-template-columns:1fr}
+  .pcard-img{border-radius:0 0 8px 8px;min-height:160px}
   .avatar{width:170px;height:170px}
 }
 </style>
@@ -321,10 +337,6 @@ footer a:hover{color:var(--accent)}
     <a class="social-btn" href="https://github.com/Yejin-Hwang" target="_blank">
       <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
       GitHub
-    </a>
-    <a class="social-btn" href="/cdn-cgi/l/email-protection#0d746867646365236e7e4d6a606c6461236e6260">
-      <svg viewBox="0 0 24 24"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 010 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>
-      Email
     </a>
     <a class="social-btn" href="https://github.com/Yejin-Hwang/Yejin-Hwang/raw/main/CV_yejin_hwang_March_2026.pdf" target="_blank">
       <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm4 18H6V4h7v5h5v11zm-5-9H9v2h4v-2zm2 4H9v2h6v-2z"/></svg>
@@ -375,7 +387,6 @@ footer a:hover{color:var(--accent)}
       <div class="skill-card-title">Languages & Tools</div>
       <div class="skill-tags">
         <span class="skill-tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt=""/>Python</span>
-        <span class="skill-tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/r/r-original.svg" alt=""/>R</span>
         <span class="skill-tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt=""/>SQL / MySQL</span>
         <span class="skill-tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt=""/>PostgreSQL</span>
         <span class="skill-tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt=""/>Git / GitHub</span>
@@ -407,9 +418,32 @@ footer a:hover{color:var(--accent)}
         <span class="skill-tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt=""/>NumPy</span>
         <span class="skill-tag">📊 Matplotlib</span>
         <span class="skill-tag">🎨 Seaborn</span>
-        <span class="skill-tag">🗂 Tableau</span>
-        <span class="skill-tag">📐 Bayesian Stats</span>
-        <span class="skill-tag">🧬 Clinical Data</span>
+        <span class="skill-tag">🗂 Tableau / Power BI</span>
+        <span class="skill-tag">🔧 ETL Pipelines</span>
+        <span class="skill-tag">📋 KPI Dashboards</span>
+      </div>
+    </div>
+
+    <div class="skill-card fade">
+      <div class="skill-card-title">Research & Domains</div>
+      <div class="skill-tags">
+        <span class="skill-tag">⏳ Time-Series Forecasting</span>
+        <span class="skill-tag">🧠 LLMs / NLP</span>
+        <span class="skill-tag">💬 Sentiment Analysis</span>
+        <span class="skill-tag">🤖 Explainable AI</span>
+        <span class="skill-tag">🔗 Causal Inference</span>
+        <span class="skill-tag">📡 Data Integration</span>
+        <span class="skill-tag">✍️ Technical Writing</span>
+      </div>
+    </div>
+
+    <div class="skill-card fade">
+      <div class="skill-card-title">Soft Skills</div>
+      <div class="skill-tags">
+        <span class="skill-tag">🤝 Cross-functional Collaboration</span>
+        <span class="skill-tag">🎙️ Stakeholder Communication</span>
+        <span class="skill-tag">🧑‍🏫 Research Mentoring</span>
+        <span class="skill-tag">📌 Project Management</span>
       </div>
     </div>
 
@@ -424,36 +458,40 @@ footer a:hover{color:var(--accent)}
   <h2>Selected Projects</h2>
   <div class="project-list">
 
-    <a class="pcard fade" href="https://github.com/Yejin-Hwang/Financial-Time-Series-Forecasting-with-Deep-Learning-and-Social-Media-Sentiment" target="_blank">
-      <div class="ptag">KDD 2026 · Under Review</div>
-      <div class="pname">Financial Forecasting with Deep Learning & Sentiment</div>
-      <div class="pdesc">Multimodal TFT + FinBERT framework across 10 equities, 1,000 trading days. +213.6% IC improvement, Sharpe ratio 2.74, 20.19% cumulative return.</div>
-      <div class="ptechs"><span class="ptech">TFT</span><span class="ptech">FinBERT</span><span class="ptech">PyTorch</span><span class="ptech">NLP</span><span class="ptech">Reddit API</span></div>
-      <div class="plink">View on GitHub →</div>
+    <a class="pcard has-img fade" href="https://github.com/Yejin-Hwang/Financial-Time-Series-Forecasting-with-Deep-Learning-and-Social-Media-Sentiment" target="_blank">
+      <div class="pcard-body">
+        <div class="ptag">KDD 2026 · Under Review</div>
+        <div class="pname">Financial Forecasting with Deep Learning & Sentiment</div>
+        <div class="pdesc">Multimodal TFT + FinBERT framework across 10 equities, 1,000 trading days. +213.6% IC improvement, Sharpe ratio 2.74, 20.19% cumulative return.</div>
+        <div class="ptechs"><span class="ptech">TFT</span><span class="ptech">FinBERT</span><span class="ptech">PyTorch</span><span class="ptech">NLP</span><span class="ptech">Reddit API</span></div>
+        <div class="plink">View on GitHub →</div>
+      </div>
+      <div class="pcard-img">
+        <img src="img_financial.png" alt="Financial Forecasting"/>
+      </div>
     </a>
 
-    <a class="pcard fade" href="https://github.com/Yejin-Hwang/Reddit-Driven-Stock-Forecasting" target="_blank">
-      <div class="ptag">NLP · Time-Series</div>
-      <div class="pname">Reddit-Driven Stock Forecasting</div>
-      <div class="pdesc">TSLA & NVDA forecasting using ARIMA, TimesFM, Chronos, TFT. RMSE ↓40.2% for TSLA, ↓87.9% for NVDA vs. baseline models.</div>
-      <div class="ptechs"><span class="ptech">TFT</span><span class="ptech">Chronos-T5</span><span class="ptech">VADER</span><span class="ptech">TimesFM</span></div>
-      <div class="plink">View on GitHub →</div>
+    <a class="pcard has-img fade" href="https://github.com/Yejin-Hwang/Reddit-Driven-Stock-Forecasting" target="_blank">
+      <div class="pcard-body">
+        <div class="ptag">NLP · Time-Series</div>
+        <div class="pname">Reddit-Driven Stock Forecasting</div>
+        <div class="pdesc">TSLA & NVDA forecasting using ARIMA, TimesFM, Chronos, TFT. RMSE ↓40.2% for TSLA, ↓87.9% for NVDA vs. baseline models.</div>
+        <div class="ptechs"><span class="ptech">TFT</span><span class="ptech">Chronos-T5</span><span class="ptech">VADER</span><span class="ptech">TimesFM</span></div>
+        <div class="plink">View on GitHub →</div>
+      </div>
+      <div class="pcard-img">
+        <img src="img_reddit.png" alt="Reddit Stock Forecasting"/>
+      </div>
     </a>
 
     <a class="pcard fade" href="https://github.com/Yejin-Hwang/Bayesian-Cost-Prediction-in-Healthcare" target="_blank">
-      <div class="ptag">Bayesian · Healthcare</div>
-      <div class="pname">Bayesian Cost Prediction in Healthcare</div>
-      <div class="pdesc">Bayesian vs. Frequentist regression for individual medical cost prediction with uncertainty quantification in R.</div>
-      <div class="ptechs"><span class="ptech">R</span><span class="ptech">Bayesian</span><span class="ptech">rethinking</span><span class="ptech">Stan</span></div>
-      <div class="plink">View on GitHub →</div>
-    </a>
-
-    <a class="pcard fade" href="https://github.com/Yejin-Hwang/Multivariate-Statistics" target="_blank">
-      <div class="ptag">Statistics</div>
-      <div class="pname">Multivariate Statistics</div>
-      <div class="pdesc">PCA, factor analysis, MANOVA, and discriminant analysis on real-world datasets in R.</div>
-      <div class="ptechs"><span class="ptech">R</span><span class="ptech">PCA</span><span class="ptech">MANOVA</span></div>
-      <div class="plink">View on GitHub →</div>
+      <div class="pcard-body">
+        <div class="ptag">Bayesian · Healthcare</div>
+        <div class="pname">Bayesian Cost Prediction in Healthcare</div>
+        <div class="pdesc">Bayesian vs. Frequentist regression for individual medical cost prediction with uncertainty quantification in R.</div>
+        <div class="ptechs"><span class="ptech">R</span><span class="ptech">Bayesian</span><span class="ptech">rethinking</span><span class="ptech">Stan</span></div>
+        <div class="plink">View on GitHub →</div>
+      </div>
     </a>
 
   </div>
@@ -541,7 +579,7 @@ footer a:hover{color:var(--accent)}
 <!-- ══ CERTIFICATIONS — ALL 8 ══ -->
 <section id="certifications">
   <div class="sec-label">Certifications</div>
-  <h2>Credentials</h2>
+  <h2>Certifications</h2>
 
   <p class="certs-group-label">
     🎓 <strong>Google Data Analytics Professional Certificate</strong> &nbsp;·&nbsp; Coursera &nbsp;·&nbsp; Issued Mar 2026
@@ -601,8 +639,8 @@ footer a:hover{color:var(--accent)}
   <p class="sec-sub" style="margin:0 auto 1rem;text-align:center">Open to PhD opportunities, research collaborations, and data science roles. I'd love to hear from you.</p>
 
   <div class="contact-links">
-    <a class="clink fade" href="/cdn-cgi/l/email-protection#f089959a999e98de9383b0979d91999cde939f9d">
-      <div class="clink-icon">✉</div><span class="__cf_email__" data-cfemail="7c051916151214521f0f3c1b111d1510521f1311">[email&#160;protected]</span>
+    <a class="clink fade" href="mailto:yejinh.cs@gmail.com">
+      <div class="clink-icon">✉</div>yejinh_dot_cs@gmail.com
     </a>
     <a class="clink fade" href="https://linkedin.com/in/yejin-data" target="_blank">
       <div class="clink-icon">in</div>linkedin.com/in/yejin-data
