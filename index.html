@@ -280,6 +280,18 @@ footer a:hover{color:var(--accent)}
 
 /* TABLEAU */
 
+/* CAREER TIMELINE */
+.career-timeline{display:flex;flex-direction:column;gap:0;margin:1.4rem 0 1.2rem;position:relative;padding-left:1.4rem}
+.career-timeline::before{content:'';position:absolute;left:.35rem;top:.4rem;bottom:.4rem;width:1.5px;background:linear-gradient(to bottom,var(--accent-light),var(--sage-mid))}
+.ct-item{position:relative;padding:.55rem 0 .55rem .9rem;display:grid;grid-template-columns:2.8rem 1fr;grid-template-rows:auto auto;column-gap:.7rem}
+.ct-item--last .ct-desc{color:var(--dark)}
+.ct-dot{position:absolute;left:-1.05rem;top:.75rem;width:9px;height:9px;border-radius:50%;background:var(--sage-mid);border:2px solid var(--white);box-shadow:0 0 0 1.5px var(--accent-light)}
+.ct-dot--accent{background:var(--accent);box-shadow:0 0 0 3px rgba(74,122,64,.2)}
+.ct-year{font-size:.65rem;font-weight:700;color:var(--accent);letter-spacing:.06em;grid-row:1;padding-top:.05rem}
+.ct-label{font-size:.78rem;font-weight:600;color:var(--dark);grid-row:1;grid-column:2}
+.ct-desc{font-size:.7rem;color:var(--muted);line-height:1.6;grid-row:2;grid-column:2;margin-top:.1rem}
+@media(max-width:600px){.career-timeline{padding-left:1rem}}
+
 /* ABOUT PHOTO LAYOUT */
 .about-photo-row{display:grid;grid-template-columns:200px 1fr;gap:2rem;align-items:start;margin-bottom:2rem}
 .about-photo-wrap{position:relative;flex-shrink:0}
@@ -443,8 +455,48 @@ footer a:hover{color:var(--accent)}
     </div>
     <div class="about-body">
       <p>I believe <span class="highlight">data has a story</span> — and my job is to find it, tell it, and make it matter. That belief didn't start in a lecture hall. It started in a hospital corridor in Seoul, where I met cancer patients face-to-face to collect clinical data. Looking at the numbers later, I realized each row in a spreadsheet was a person — their pain, their hope, their story. <span class="highlight">That moment changed everything for me.</span></p>
-      <p>My path here is anything but linear. Culture & Technology at SKKU → COVID sparked obsession with health data → nutritional epidemiology lab → <span class="highlight">Samsung Medical Center</span> (oncology research, Johns Hopkins PIs) → U.S. for my MS → deep learning → one very specific rabbit hole: <em>can Reddit predict the stock market?</em> That question became my thesis.</p>
-      <p>Now I'm wrapping up my <span class="highlight">MS in Data Science at TAMUCC</span> (GPA 4.0, full scholarship) and actively looking for Data Analyst / Data Scientist roles in the U.S. — 3-year STEM OPT available.</p>
+
+      <!-- TIMELINE -->
+      <div class="career-timeline">
+        <div class="ct-item">
+          <div class="ct-dot"></div>
+          <div class="ct-year">2018</div>
+          <div class="ct-label">Sungkyunkwan University (SKKU)</div>
+          <div class="ct-desc">B.S. Culture &amp; Technology + Food Science &amp; Biotechnology · started at the intersection of media, music &amp; tech</div>
+        </div>
+        <div class="ct-item">
+          <div class="ct-dot"></div>
+          <div class="ct-year">2020</div>
+          <div class="ct-label">First Step into Data Science</div>
+          <div class="ct-desc">COVID sparked a deep curiosity about human health &amp; disease — led me to nutritional epidemiology and the power of data-driven research</div>
+        </div>
+        <div class="ct-item">
+          <div class="ct-dot"></div>
+          <div class="ct-year">2022</div>
+          <div class="ct-label">Nutritional Epidemiology Lab</div>
+          <div class="ct-desc">Undergraduate researcher at CliNE Lab (SKKU) under Prof. Jinhee Hur — bridging biotechnology and data analysis</div>
+        </div>
+        <div class="ct-item">
+          <div class="ct-dot"></div>
+          <div class="ct-year">2022–23</div>
+          <div class="ct-label">Samsung Medical Center</div>
+          <div class="ct-desc">Clinical data researcher · oncology studies (esophageal &amp; breast cancer) · Johns Hopkins-affiliated PIs · real-world patient data</div>
+        </div>
+        <div class="ct-item">
+          <div class="ct-dot"></div>
+          <div class="ct-year">2024</div>
+          <div class="ct-label">M.S. Data Science — TAMUCC, USA</div>
+          <div class="ct-desc">Full scholarship · GPA 4.0 · expanded into ML, DL, NLP, time-series forecasting</div>
+        </div>
+        <div class="ct-item ct-item--last">
+          <div class="ct-dot ct-dot--accent"></div>
+          <div class="ct-year">2026</div>
+          <div class="ct-label">Now 🎯</div>
+          <div class="ct-desc">Thesis → KDD 2026 · seeking Data Analyst / Data Scientist roles in the U.S. · 3-year STEM OPT available</div>
+        </div>
+      </div>
+
+      <p>3-year STEM OPT available · open to opportunities across the U.S.</p>
     </div>
   </div>
 
@@ -572,10 +624,11 @@ footer a:hover{color:var(--accent)}
     <!-- TAMU TABLEAU -->
     <div class="pcard has-img fade" onclick="openModal('tamu')" style="cursor:pointer">
       <div class="pcard-body">
-        <div class="ptag">📊 Tableau · Education · Demographics</div>
+        <div class="ptag">📊 Tableau · Education · Demographics · <span style="color:#e07b39;font-weight:600">🔄 Ongoing</span></div>
         <div class="pname">TAMU Enrollment Trends</div>
-        <div class="pdesc">Analyzing annual enrollment trends and demographic shifts across the Texas A&M University System (2018–2024) — exploring patterns that can inform future enrollment planning and institutional decision-making.</div>
-        <div class="ptechs"><span class="ptech">Tableau Public</span><span class="ptech">Higher Ed Data</span><span class="ptech">Demographics</span><span class="ptech">Trend Analysis</span></div>
+        <div class="pdesc">Analyzing annual enrollment trends and demographic shifts across the Texas A&M University System — built on real-world IPEDS data (cleaned and processed from scratch). Currently in progress: cleaning raw institutional data, building SQL queries, and constructing the full visualization pipeline.</div>
+        <div style="margin:.5rem 0 .6rem;font-size:.7rem;color:var(--muted)">📂 Data source: <a href="https://nces.ed.gov/ipeds/datacenter/DataFiles.aspx?year=2024&surveyNumber=2&sid=5fd611ff-5df5-470d-a511-6d72709dfbbf&rtid=7" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:500" onclick="event.stopPropagation()">NCES IPEDS 2024 ↗</a></div>
+        <div class="ptechs"><span class="ptech">Tableau Public</span><span class="ptech">Power Query</span><span class="ptech">SQL</span><span class="ptech">Python · Pandas</span><span class="ptech">Data Cleaning</span></div>
         <div class="plink">Open Interactive Dashboard →</div>
       </div>
       <div class="pcard-img">
@@ -893,8 +946,8 @@ footer a:hover{color:var(--accent)}
   <p class="sec-sub" style="margin:0 auto 1rem;text-align:center">Open to PhD opportunities, research collaborations, and data science roles. I'd love to hear from you.</p>
 
   <div class="contact-links">
-    <a class="clink fade" href="/cdn-cgi/l/email-protection#9ae3fff0f3f4f2b4f9e9dafdf7fbf3f6b4f9f5f7">
-      <div class="clink-icon">✉</div><span class="__cf_email__" data-cfemail="b2cbd7d8dbdcdaedd6ddc6edd1c1f2d5dfd3dbde9cd1dddf">[email&#160;protected]</span>
+    <a class="clink fade" href="mailto:yejinh.cs@gmail.com">
+      <div class="clink-icon">✉</div>yejinh_dot_cs[at]gmail.com
     </a>
     <a class="clink fade" href="https://linkedin.com/in/yejin-data" target="_blank">
       <div class="clink-icon">in</div>linkedin.com/in/yejin-data
