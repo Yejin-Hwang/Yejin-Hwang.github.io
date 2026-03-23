@@ -122,7 +122,7 @@ nav a:hover{color:var(--accent)}
 .divider{width:100%;height:1px;background:var(--border)}
 
 /* SECTIONS */
-section{max-width:800px;margin:0 auto;padding:5rem 2rem}
+section{max-width:1100px;margin:0 auto;padding:5rem 2rem}
 .sec-label{
   font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;
   color:var(--accent);font-weight:600;margin-bottom:1.2rem;
@@ -151,7 +151,7 @@ h2{
 .badge .icon{font-size:.85rem}
 
 /* SKILLS WITH LOGOS */
-.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.2rem}
+.skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem}
 .skill-card{
   background:var(--white);border:1.5px solid var(--border);
   padding:1.5rem;border-radius:10px;
@@ -279,11 +279,6 @@ footer a{color:var(--muted);text-decoration:none;transition:color .2s}
 footer a:hover{color:var(--accent)}
 
 /* TABLEAU */
-.tableau-card{background:var(--white);border:1.5px solid var(--border);border-radius:12px;overflow:hidden;transition:border-color .25s,box-shadow .25s}
-.tableau-card:hover{border-color:var(--accent-light);box-shadow:0 6px 28px rgba(74,122,64,.1)}
-.tableau-card-header{padding:1.6rem 1.6rem .8rem}
-.tableau-embed-wrap{padding:0 1.6rem 1.6rem;overflow:hidden}
-.tableau-embed-wrap .tableauPlaceholder{width:100%}
 
 /* ABOUT PHOTO LAYOUT */
 .about-photo-row{display:grid;grid-template-columns:200px 1fr;gap:2rem;align-items:start;margin-bottom:2rem}
@@ -334,7 +329,7 @@ footer a:hover{color:var(--accent)}
 @media(max-width:600px){.extra-grid{grid-template-columns:1fr}}
 
 /* BEYOND THE DATA */
-.beyond-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.2rem;margin-top:1rem}
+.beyond-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:1rem}
 .beyond-card{background:var(--white);border:1.5px solid var(--border);border-radius:10px;padding:1.5rem;transition:border-color .2s,box-shadow .2s}
 .beyond-card:hover{border-color:var(--accent-light);box-shadow:0 4px 18px rgba(74,122,64,.08)}
 .beyond-icon{font-size:1.6rem;margin-bottom:.7rem}
@@ -353,6 +348,7 @@ footer a:hover{color:var(--accent)}
   .exp-item{grid-template-columns:1fr;gap:.6rem}
   .certs-grid{grid-template-columns:1fr}
   .skills-grid{grid-template-columns:1fr}
+  .beyond-grid{grid-template-columns:1fr}
   .exp-meta{border-left:3px solid var(--accent);padding-left:.8rem}
   .pcard.has-img{grid-template-columns:1fr}
   .pcard-img{border-radius:0 0 8px 8px;min-height:160px}
@@ -366,11 +362,10 @@ footer a:hover{color:var(--accent)}
   <a href="#aboutme">About Me</a>
   <a href="#skills">Skills</a>
   <a href="#projects">Projects</a>
-  <a href="#tableau">Dashboards</a>
   <a href="#education">Education</a>
-  <a href="#beyond">Beyond</a>
+  <a href="#beyond">Activities</a>
   <a href="#experience">Experience</a>
-  <a href="#extracurricular">Activities</a>
+  <a href="#extracurricular">Conferences</a>
   <a href="#certifications">Certs</a>
   <a href="#contact">Contact</a>
 </nav>
@@ -537,13 +532,14 @@ footer a:hover{color:var(--accent)}
 
 <div class="divider"></div>
 
-<!-- ══ PROJECTS ══ -->
+<!-- ══ PROJECTS (merged) ══ -->
 <section id="projects">
   <div class="sec-label">Featured Projects</div>
   <h2>Selected Projects</h2>
+  <p class="sec-sub">From Reddit rabbit holes to hospital data — projects that started with a question I couldn't stop thinking about. Some are research, some are practice, all are personal. 🔍</p>
   <div class="project-list">
 
-    <!-- THESIS card — opens modal -->
+    <!-- THESIS -->
     <div class="pcard has-img fade" onclick="openModal('thesis')" style="cursor:pointer">
       <div class="pcard-body">
         <div class="ptag">📌 Thesis · KDD 2026 Under Review</div>
@@ -557,141 +553,56 @@ footer a:hover{color:var(--accent)}
       </div>
     </div>
 
+    <!-- REDDIT (earlier version) -->
     <a class="pcard has-img fade" href="https://github.com/Yejin-Hwang/Reddit-Driven-Stock-Forecasting" target="_blank">
       <div class="pcard-body">
-        <div class="ptag">NLP · Time-Series</div>
+        <div class="ptag">🔁 Precursor to Thesis · NLP · Time-Series</div>
         <div class="pname">Reddit-Driven Stock Forecasting</div>
-        <div class="pdesc">TSLA & NVDA forecasting using ARIMA, TimesFM, Chronos, TFT. RMSE ↓40.2% for TSLA, ↓87.9% for NVDA vs. baseline models.</div>
-        <div class="ptechs"><span class="ptech">TFT</span><span class="ptech">Chronos-T5</span><span class="ptech">VADER</span><span class="ptech">TimesFM</span></div>
+        <div class="pdesc">The earlier version that started it all — before the thesis expanded the scope. Focused on TSLA & NVDA with ARIMA, TimesFM, Chronos, and TFT. The results were promising enough (RMSE ↓40.2% for TSLA, ↓87.9% for NVDA) that I kept going: more tickers, richer sentiment features, deeper models. That became the thesis.</div>
+        <div class="ptechs"><span class="ptech">TFT</span><span class="ptech">Chronos-T5</span><span class="ptech">VADER</span><span class="ptech">TimesFM</span><span class="ptech">ARIMA</span></div>
         <div class="plink">View on GitHub →</div>
       </div>
       <div class="pcard-img">
-        <img src="img_reddit.png" alt="Reddit Stock Forecasting"/>
+        <img src="img_reddit.png" alt="Reddit Stock Forecasting" onerror="this.parentElement.style.background='var(--sage-pale)';this.style.display='none'"/>
       </div>
     </a>
 
-    <a class="pcard fade" href="https://github.com/Yejin-Hwang/Bayesian-Cost-Prediction-in-Healthcare" target="_blank">
+    <!-- TAMU TABLEAU -->
+    <div class="pcard has-img fade" onclick="openModal('tamu')" style="cursor:pointer">
       <div class="pcard-body">
-        <div class="ptag">Bayesian · Healthcare</div>
-        <div class="pname">Bayesian Cost Prediction in Healthcare</div>
-        <div class="pdesc">Bayesian vs. Frequentist regression for individual medical cost prediction with uncertainty quantification in R.</div>
-        <div class="ptechs"><span class="ptech">R</span><span class="ptech">Bayesian</span><span class="ptech">rethinking</span><span class="ptech">Stan</span></div>
-        <div class="plink">View on GitHub →</div>
+        <div class="ptag">📊 Tableau · Education · Demographics</div>
+        <div class="pname">TAMU Enrollment Trends</div>
+        <div class="pdesc">Analyzing annual enrollment trends and demographic shifts across the Texas A&M University System (2018–2024) — exploring patterns that can inform future enrollment planning and institutional decision-making.</div>
+        <div class="ptechs"><span class="ptech">Tableau Public</span><span class="ptech">Higher Ed Data</span><span class="ptech">Demographics</span><span class="ptech">Trend Analysis</span></div>
+        <div class="plink">Open Interactive Dashboard →</div>
       </div>
-    </a>
+      <div class="pcard-img">
+        <img src="https://public.tableau.com/static/images/ta/tamuenrollment/Dashboard1/1.png" alt="TAMU Enrollment Dashboard"/>
+      </div>
+    </div>
+
+    <!-- APPLE TABLEAU -->
+    <div class="pcard has-img fade" onclick="openModal('apple')" style="cursor:pointer">
+      <div class="pcard-body">
+        <div class="ptag">📊 Tableau · Consumer Brand · Market Analysis</div>
+        <div class="pname">Apple in Korea — A Data Story</div>
+        <div class="pdesc">Deep-diving into Apple's brand performance and product line popularity in the Korean market — how a global tech brand plays out in one of the world's most brand-conscious consumer markets. Built with simulated sales data to practice real analytical storytelling.</div>
+        <div class="ptechs"><span class="ptech">Tableau Public</span><span class="ptech">Brand Analysis</span><span class="ptech">Consumer Insights</span><span class="ptech">Korea Market</span></div>
+        <div class="plink">Open Interactive Dashboard →</div>
+      </div>
+      <div class="pcard-img">
+        <img src="https://public.tableau.com/static/images/Ap/AppleinKoreaADataStory/Dashboard3/1.png" alt="Apple in Korea Dashboard"/>
+      </div>
+    </div>
 
   </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- ══ TABLEAU DASHBOARDS ══ -->
-<section id="tableau">
-  <div class="sec-label">Data Visualization</div>
-  <h2>Tableau Dashboards</h2>
-  <p class="sec-sub">Interactive dashboards built with Tableau Public — exploring real-world datasets through visual storytelling. Still learning and growing 🌱</p>
-
-  <!-- Dashboard 1: TAMU Enrollment -->
-  <div class="tableau-card fade">
-    <div class="tableau-card-header">
-      <div>
-        <div class="ptag">Education · Demographics</div>
-        <div class="pname" style="font-family:'DM Serif Display',serif;font-size:1.15rem;font-weight:400;color:var(--dark);margin-bottom:.4rem">TAMU Enrollment Trends</div>
-        <p style="font-size:.78rem;color:var(--muted);line-height:1.8;max-width:55ch">Analyzing annual enrollment trends and demographic shifts at Texas A&M University — exploring patterns that can inform future enrollment planning and institutional decision-making.</p>
-        <div class="ptechs" style="display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.7rem">
-          <span class="ptech">Tableau Public</span><span class="ptech">Higher Ed Data</span><span class="ptech">Demographics</span><span class="ptech">Trend Analysis</span>
-        </div>
-      </div>
-    </div>
-    <div class="tableau-embed-wrap">
-      <div class='tableauPlaceholder' id='viz1774246711571' style='position:relative;width:100%'>
-        <noscript><a href='#'><img alt='Dashboard 1' src='https://public.tableau.com/static/images/ta/tamuenrollment/Dashboard1/1_rss.png' style='border:none'/></a></noscript>
-        <object class='tableauViz' style='display:none;'>
-          <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F'/>
-          <param name='embed_code_version' value='3'/>
-          <param name='site_root' value=''/>
-          <param name='name' value='tamuenrollment&#47;Dashboard1'/>
-          <param name='tabs' value='no'/>
-          <param name='toolbar' value='yes'/>
-          <param name='static_image' value='https://public.tableau.com/static/images/ta/tamuenrollment/Dashboard1/1.png'/>
-          <param name='animate_transition' value='yes'/>
-          <param name='display_static_image' value='yes'/>
-          <param name='display_spinner' value='yes'/>
-          <param name='display_overlay' value='yes'/>
-          <param name='display_count' value='yes'/>
-          <param name='language' value='en-US'/>
-          <param name='filter' value='publish=yes'/>
-        </object>
-      </div>
-      <script type='text/javascript'>
-        (function(){
-          var divElement = document.getElementById('viz1774246711571');
-          var vizElement = divElement.getElementsByTagName('object')[0];
-          vizElement.style.width='100%';
-          if(divElement.offsetWidth > 800){vizElement.style.height='827px';}
-          else if(divElement.offsetWidth > 500){vizElement.style.height='827px';}
-          else{vizElement.style.height='1800px';}
-          var scriptElement = document.createElement('script');
-          scriptElement.src='https://public.tableau.com/javascripts/api/viz_v1.js';
-          vizElement.parentNode.insertBefore(scriptElement,vizElement);
-        })();
-      </script>
-    </div>
-  </div>
-
-  <!-- Dashboard 2: Apple in Korea -->
-  <div class="tableau-card fade" style="margin-top:2.5rem">
-    <div class="tableau-card-header">
-      <div>
-        <div class="ptag">Consumer Brand · Market Analysis</div>
-        <div class="pname" style="font-family:'DM Serif Display',serif;font-size:1.15rem;font-weight:400;color:var(--dark);margin-bottom:.4rem">Apple in Korea — A Data Story</div>
-        <p style="font-size:.78rem;color:var(--muted);line-height:1.8;max-width:55ch">Deep-diving into Apple's brand performance and product line popularity in the Korean market. Exploring how a global tech brand plays out in one of the world's most brand-conscious consumer markets — using simulated sales data to practice real analytical storytelling.</p>
-        <div class="ptechs" style="display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.7rem">
-          <span class="ptech">Tableau Public</span><span class="ptech">Brand Analysis</span><span class="ptech">Consumer Insights</span><span class="ptech">Korea Market</span>
-        </div>
-      </div>
-    </div>
-    <div class="tableau-embed-wrap">
-      <div class='tableauPlaceholder' id='viz1774246726673' style='position:relative;width:100%'>
-        <noscript><a href='#'><img alt='Dashboard 3' src='https://public.tableau.com/static/images/Ap/AppleinKoreaADataStory/Dashboard3/1_rss.png' style='border:none'/></a></noscript>
-        <object class='tableauViz' style='display:none;'>
-          <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F'/>
-          <param name='embed_code_version' value='3'/>
-          <param name='site_root' value=''/>
-          <param name='name' value='AppleinKoreaADataStory&#47;Dashboard3'/>
-          <param name='tabs' value='no'/>
-          <param name='toolbar' value='yes'/>
-          <param name='static_image' value='https://public.tableau.com/static/images/Ap/AppleinKoreaADataStory/Dashboard3/1.png'/>
-          <param name='animate_transition' value='yes'/>
-          <param name='display_static_image' value='yes'/>
-          <param name='display_spinner' value='yes'/>
-          <param name='display_overlay' value='yes'/>
-          <param name='display_count' value='yes'/>
-          <param name='language' value='en-US'/>
-        </object>
-      </div>
-      <script type='text/javascript'>
-        (function(){
-          var divElement = document.getElementById('viz1774246726673');
-          var vizElement = divElement.getElementsByTagName('object')[0];
-          vizElement.style.width='100%';
-          if(divElement.offsetWidth > 800){vizElement.style.height='695px';}
-          else if(divElement.offsetWidth > 500){vizElement.style.height='695px';}
-          else{vizElement.style.height='1400px';}
-          var scriptElement = document.createElement('script');
-          scriptElement.src='https://public.tableau.com/javascripts/api/viz_v1.js';
-          vizElement.parentNode.insertBefore(scriptElement,vizElement);
-        })();
-      </script>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ══ BEYOND THE DATA ══ -->
+<!-- ══ ACTIVITIES ══ -->
 <section id="beyond">
-  <div class="sec-label">Beyond the Data</div>
+  <div class="sec-label">Activities</div>
   <h2>A little more about me ✨</h2>
   <p class="sec-sub">I think the best analysts are curious people first — here's what makes me, me.</p>
   <div class="beyond-grid fade">
@@ -864,7 +775,7 @@ footer a:hover{color:var(--accent)}
 
 <!-- ══ EXTRA-CURRICULAR ══ -->
 <section id="extracurricular">
-  <div class="sec-label">Activities</div>
+  <div class="sec-label">Conferences & Activities</div>
   <h2>Beyond the Lab</h2>
   <p class="sec-sub">Conferences, communities, and moments that shaped who I am as a researcher.</p>
 
@@ -986,6 +897,107 @@ footer a:hover{color:var(--accent)}
 
 <!-- ══ THESIS MODAL ══ -->
 <div id="modal-overlay" onclick="closeModal()" style="display:none;position:fixed;inset:0;background:rgba(10,20,10,.55);backdrop-filter:blur(6px);z-index:500;"></div>
+
+<!-- ══ MODAL: TAMU ENROLLMENT ══ -->
+<div id="modal-tamu" style="display:none;position:fixed;top:0;right:0;bottom:0;width:min(900px,100vw);background:var(--bg);z-index:600;overflow-y:auto;box-shadow:-12px 0 48px rgba(0,0,0,.18);transform:translateX(100%);transition:transform .38s cubic-bezier(.22,1,.36,1);">
+  <div style="position:sticky;top:0;background:rgba(249,251,247,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:1.1rem 1.6rem;display:flex;align-items:center;justify-content:space-between;z-index:10;">
+    <div>
+      <div style="font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:.2rem">Education · Demographics</div>
+      <div style="font-family:'DM Serif Display',serif;font-size:1.15rem;color:var(--dark)">TAMU Enrollment Trends</div>
+    </div>
+    <button onclick="closeModal()" style="background:none;border:1.5px solid var(--border);border-radius:6px;width:36px;height:36px;cursor:pointer;font-size:1.1rem;color:var(--muted);display:flex;align-items:center;justify-content:center;flex-shrink:0" onmouseover="this.style.borderColor='var(--accent)';this.style.color='var(--accent)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--muted)'">✕</button>
+  </div>
+  <div style="padding:1.5rem 1.6rem 4rem;">
+    <p style="font-size:.82rem;color:var(--muted);line-height:1.8;margin-bottom:1.5rem">Analyzing enrollment trends and demographic shifts across the Texas A&M University System (2018–2024). Use the filters to explore by campus, year, and student demographics.</p>
+    <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:10px;border:1.5px solid var(--border);">
+      <div class='tableauPlaceholder' id='viz1774246711571' style='position:relative'>
+        <noscript><a href='#'><img alt='Dashboard 1' src='https://public.tableau.com/static/images/ta/tamuenrollment/Dashboard1/1_rss.png' style='border:none'/></a></noscript>
+        <object class='tableauViz' style='display:none;'>
+          <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F'/>
+          <param name='embed_code_version' value='3'/>
+          <param name='site_root' value=''/>
+          <param name='name' value='tamuenrollment&#47;Dashboard1'/>
+          <param name='tabs' value='no'/>
+          <param name='toolbar' value='yes'/>
+          <param name='static_image' value='https://public.tableau.com/static/images/ta/tamuenrollment/Dashboard1/1.png'/>
+          <param name='animate_transition' value='yes'/>
+          <param name='display_static_image' value='yes'/>
+          <param name='display_spinner' value='yes'/>
+          <param name='display_overlay' value='yes'/>
+          <param name='display_count' value='yes'/>
+          <param name='language' value='en-US'/>
+          <param name='filter' value='publish=yes'/>
+        </object>
+      </div>
+      <script type='text/javascript'>
+        (function(){
+          var divElement = document.getElementById('viz1774246711571');
+          var vizElement = divElement.getElementsByTagName('object')[0];
+          if(divElement.offsetWidth > 800){vizElement.style.width='1200px';vizElement.style.height='1027px';}
+          else if(divElement.offsetWidth > 500){vizElement.style.width='1200px';vizElement.style.height='1027px';}
+          else{vizElement.style.width='100%';vizElement.style.height='2377px';}
+          var scriptElement = document.createElement('script');
+          scriptElement.src='https://public.tableau.com/javascripts/api/viz_v1.js';
+          vizElement.parentNode.insertBefore(scriptElement,vizElement);
+        })();
+      </script>
+    </div>
+    <div style="margin-top:1rem;display:flex;gap:1rem;flex-wrap:wrap">
+      <a href="https://public.tableau.com/views/tamuenrollment/Dashboard1" target="_blank" class="btn-primary" style="font-size:.72rem">Open in Tableau Public ↗</a>
+      <button onclick="closeModal()" class="btn-ghost" style="font-size:.72rem;background:none;cursor:pointer">← Back</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MODAL: APPLE IN KOREA ══ -->
+<div id="modal-apple" style="display:none;position:fixed;top:0;right:0;bottom:0;width:min(900px,100vw);background:var(--bg);z-index:600;overflow-y:auto;box-shadow:-12px 0 48px rgba(0,0,0,.18);transform:translateX(100%);transition:transform .38s cubic-bezier(.22,1,.36,1);">
+  <div style="position:sticky;top:0;background:rgba(249,251,247,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:1.1rem 1.6rem;display:flex;align-items:center;justify-content:space-between;z-index:10;">
+    <div>
+      <div style="font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:.2rem">Consumer Brand · Market Analysis</div>
+      <div style="font-family:'DM Serif Display',serif;font-size:1.15rem;color:var(--dark)">Apple in Korea — A Data Story</div>
+    </div>
+    <button onclick="closeModal()" style="background:none;border:1.5px solid var(--border);border-radius:6px;width:36px;height:36px;cursor:pointer;font-size:1.1rem;color:var(--muted);display:flex;align-items:center;justify-content:center;flex-shrink:0" onmouseover="this.style.borderColor='var(--accent)';this.style.color='var(--accent)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--muted)'">✕</button>
+  </div>
+  <div style="padding:1.5rem 1.6rem 4rem;">
+    <p style="font-size:.82rem;color:var(--muted);line-height:1.8;margin-bottom:1.5rem">Exploring Apple's growth and product positioning in the Korean consumer market (2020–2025). Built with simulated data — focused on practicing real analytical storytelling through visualization.</p>
+    <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:10px;border:1.5px solid var(--border);">
+      <div class='tableauPlaceholder' id='viz1774246726673' style='position:relative'>
+        <noscript><a href='#'><img alt='Dashboard 3' src='https://public.tableau.com/static/images/Ap/AppleinKoreaADataStory/Dashboard3/1_rss.png' style='border:none'/></a></noscript>
+        <object class='tableauViz' style='display:none;'>
+          <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F'/>
+          <param name='embed_code_version' value='3'/>
+          <param name='site_root' value=''/>
+          <param name='name' value='AppleinKoreaADataStory&#47;Dashboard3'/>
+          <param name='tabs' value='no'/>
+          <param name='toolbar' value='yes'/>
+          <param name='static_image' value='https://public.tableau.com/static/images/Ap/AppleinKoreaADataStory/Dashboard3/1.png'/>
+          <param name='animate_transition' value='yes'/>
+          <param name='display_static_image' value='yes'/>
+          <param name='display_spinner' value='yes'/>
+          <param name='display_overlay' value='yes'/>
+          <param name='display_count' value='yes'/>
+          <param name='language' value='en-US'/>
+        </object>
+      </div>
+      <script type='text/javascript'>
+        (function(){
+          var divElement = document.getElementById('viz1774246726673');
+          var vizElement = divElement.getElementsByTagName('object')[0];
+          if(divElement.offsetWidth > 800){vizElement.style.width='1366px';vizElement.style.height='795px';}
+          else if(divElement.offsetWidth > 500){vizElement.style.width='1366px';vizElement.style.height='795px';}
+          else{vizElement.style.width='100%';vizElement.style.height='1777px';}
+          var scriptElement = document.createElement('script');
+          scriptElement.src='https://public.tableau.com/javascripts/api/viz_v1.js';
+          vizElement.parentNode.insertBefore(scriptElement,vizElement);
+        })();
+      </script>
+    </div>
+    <div style="margin-top:1rem;display:flex;gap:1rem;flex-wrap:wrap">
+      <a href="https://public.tableau.com/views/AppleinKoreaADataStory/Dashboard3" target="_blank" class="btn-primary" style="font-size:.72rem">Open in Tableau Public ↗</a>
+      <button onclick="closeModal()" class="btn-ghost" style="font-size:.72rem;background:none;cursor:pointer">← Back</button>
+    </div>
+  </div>
+</div>
 
 <div id="modal-thesis" style="display:none;position:fixed;top:0;right:0;bottom:0;width:min(700px,100vw);background:var(--bg);z-index:600;overflow-y:auto;box-shadow:-12px 0 48px rgba(0,0,0,.18);transform:translateX(100%);transition:transform .38s cubic-bezier(.22,1,.36,1);">
   <div style="position:sticky;top:0;background:rgba(249,251,247,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:1.1rem 1.6rem;display:flex;align-items:center;justify-content:space-between;z-index:10;">
