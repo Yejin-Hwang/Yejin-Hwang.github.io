@@ -1004,7 +1004,7 @@ footer a:hover{color:var(--accent)}
           <param name='filter' value='publish=yes'/>
         </object>
       </div>
-      <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type='text/javascript'>
+      <script type='text/javascript'>
         (function(){
           var divElement = document.getElementById('viz1774246711571');
           var vizElement = divElement.getElementsByTagName('object')[0];
@@ -1175,8 +1175,10 @@ footer a:hover{color:var(--accent)}
 </footer>
 
 <script>
+document.addEventListener('DOMContentLoaded', function() {
+
 // Modal
-function openModal(id) {
+window.openModal = function(id) {
   const overlay = document.getElementById('modal-overlay');
   const modal = document.getElementById('modal-' + id);
   if (!modal) return;
@@ -1187,7 +1189,8 @@ function openModal(id) {
     requestAnimationFrame(() => { modal.style.transform = 'translateX(0)'; });
   });
 }
-function closeModal() {
+
+window.closeModal = function() {
   document.querySelectorAll('[id^="modal-"]:not(#modal-overlay)').forEach(m => {
     m.style.transform = 'translateX(100%)';
     setTimeout(() => { m.style.display = 'none'; }, 380);
@@ -1203,4 +1206,13 @@ if ('IntersectionObserver' in window) {
   fades.forEach(f => f.classList.add('hidden'));
   const io = new IntersectionObserver((entries)=>{
     entries.forEach(e=>{
-      if(e.isIntersecting){e.target.classList.remov
+      if(e.isIntersecting){e.target.classList.remove('hidden');e.target.classList.add('visible');io.unobserve(e.target);}
+    });
+  },{threshold:0.1});
+  fades.forEach(f=>io.observe(f));
+}
+
+}); // end DOMContentLoaded
+</script>
+
+</html>
