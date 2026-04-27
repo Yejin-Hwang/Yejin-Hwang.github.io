@@ -85,15 +85,15 @@ nav a:hover{opacity:1}
 
 /* hero text */
 .hero-label{
-  font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--subtle);font-weight:600;margin-bottom:1.6rem;
+  font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--subtle);font-weight:600;margin-bottom:2rem;
   display:flex;align-items:center;gap:.7rem;
 }
 .hero-label::before{content:'';width:18px;height:1px;background:var(--subtle)}
 
 .hero-name{
-  font-size:clamp(3rem,5.5vw,5rem);
-  font-weight:700;line-height:1.0;letter-spacing:-.045em;
+  font-size:clamp(3.2rem,5.8vw,5.6rem);
+  font-weight:500;line-height:1.0;letter-spacing:-.03em;
   color:var(--dark);margin-bottom:.4rem;
 }
 .hero-name-last{
@@ -104,35 +104,35 @@ nav a:hover{opacity:1}
 
 .hero-rule{
   width:40px;height:1px;background:var(--dark);
-  margin:1.8rem 0;
+  margin:2.2rem 0;
 }
 
 .hero-desc{
-  font-size:.95rem;color:var(--muted);line-height:1.8;
-  max-width:34ch;font-weight:400;margin-bottom:2.4rem;
+  font-size:1.12rem;color:var(--muted);line-height:1.8;
+  max-width:34ch;font-weight:400;margin-bottom:2.8rem;
 }
 
 .hero-socials{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:2rem}
 .social-btn{
   display:flex;align-items:center;gap:.38rem;
-  padding:.38rem .85rem;
+  padding:.46rem 1.05rem;
   background:var(--fill);border:none;border-radius:980px;
-  color:var(--dark);font-size:.68rem;text-decoration:none;font-weight:500;
+  color:var(--dark);font-size:.8rem;text-decoration:none;font-weight:500;
   transition:background .12s;
 }
-.social-btn svg{width:12px;height:12px;fill:currentColor;flex-shrink:0}
+.social-btn svg{width:13px;height:13px;fill:currentColor;flex-shrink:0}
 .social-btn:hover{background:var(--fill2)}
 
 .hero-ctas{display:flex;gap:.6rem;flex-wrap:wrap}
 .btn-primary{
-  padding:.58rem 1.3rem;background:var(--dark);color:#fff;
-  font-size:.74rem;font-weight:600;letter-spacing:-.01em;
+  padding:.72rem 1.7rem;background:var(--dark);color:#fff;
+  font-size:.88rem;font-weight:600;letter-spacing:-.01em;
   text-decoration:none;border-radius:980px;transition:opacity .15s;
 }
 .btn-primary:hover{opacity:.78}
 .btn-ghost{
-  padding:.58rem 1.3rem;background:transparent;color:var(--dark);
-  font-size:.74rem;font-weight:400;letter-spacing:-.01em;
+  padding:.72rem 1.7rem;background:transparent;color:var(--dark);
+  font-size:.88rem;font-weight:400;letter-spacing:-.01em;
   text-decoration:none;border-radius:980px;border:1px solid var(--hairline);
   transition:background .12s;
 }
@@ -153,7 +153,7 @@ nav a:hover{opacity:1}
   .hero-left{padding:5rem 2rem 2rem;grid-row:2}
   .hero-right{grid-row:1}
   .hero-photo{object-position:center 10%}
-  .hero-name{font-size:clamp(2.6rem,9vw,4rem)}
+  .hero-name{font-size:clamp(3rem,11vw,4.8rem)}
 }
 
 /* ── DIVIDER ── */
@@ -234,26 +234,58 @@ h2{
 }
 .skill-tag img{width:12px;height:12px;object-fit:contain;flex-shrink:0}
 
-/* ── PROJECTS ── */
-.project-list{display:flex;flex-direction:column;gap:1px;background:var(--hairline)}
-.pcard{
-  background:#fff;
-  text-decoration:none;color:inherit;
-  display:grid;grid-template-columns:1fr;
-  transition:background .15s;
+/* ── PROJECTS CAROUSEL ── */
+.project-carousel-wrap{position:relative}
+.project-carousel{
+  display:flex;gap:1rem;
+  overflow-x:auto;scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+  scroll-behavior:smooth;
+  padding:0 2rem 1.2rem;
+  margin:0 -2rem;
+  cursor:grab;
+  scrollbar-width:none;-ms-overflow-style:none;
 }
-.pcard.has-img{grid-template-columns:1fr 220px}
-.pcard:hover{background:#fafafa}
-.pcard-body{padding:1.8rem 2rem}
-.pcard-img{overflow:hidden;min-height:180px}
-.pcard-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+.project-carousel::-webkit-scrollbar{display:none}
+.project-carousel.is-dragging{cursor:grabbing;scroll-behavior:auto;user-select:none}
+
+.pcard{
+  flex:0 0 calc(38% - .5rem);
+  background:#fff;border:1px solid var(--border);
+  text-decoration:none;color:inherit;
+  border-radius:18px;overflow:hidden;
+  scroll-snap-align:start;
+  display:flex;flex-direction:column;
+  transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s cubic-bezier(.22,1,.36,1);
+}
+.pcard:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(0,0,0,.1)}
+.pcard-img{overflow:hidden;height:220px;flex-shrink:0;background:var(--fill)}
+.pcard-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s cubic-bezier(.22,1,.36,1)}
 .pcard:hover .pcard-img img{transform:scale(1.04)}
+.pcard-body{padding:1.6rem 1.8rem 1.8rem;display:flex;flex-direction:column;flex:1}
 .ptag{font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;color:var(--subtle);font-weight:600;margin-bottom:.5rem}
-.pname{font-size:1.15rem;font-weight:700;letter-spacing:-.025em;color:var(--dark);margin-bottom:.5rem;line-height:1.25}
-.pdesc{font-size:.8rem;color:var(--muted);line-height:1.8;margin-bottom:.85rem}
+.pname{font-size:1.05rem;font-weight:700;letter-spacing:-.025em;color:var(--dark);margin-bottom:.6rem;line-height:1.3}
+.pdesc{font-size:.78rem;color:var(--muted);line-height:1.85;margin-bottom:.9rem;flex:1}
 .ptechs{display:flex;flex-wrap:wrap;gap:.28rem;margin-bottom:.85rem}
 .ptech{padding:.16rem .52rem;background:var(--fill);border:none;border-radius:980px;font-size:.6rem;color:var(--dark);font-weight:500}
 .plink{font-size:.7rem;color:var(--dark);font-weight:600;letter-spacing:-.01em}
+
+/* carousel nav buttons */
+.carousel-nav{display:flex;gap:.5rem;margin-top:1.4rem;justify-content:flex-end}
+.carousel-btn{
+  width:36px;height:36px;border-radius:50%;
+  background:var(--fill);border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.85rem;color:var(--dark);
+  transition:background .15s,transform .15s;
+}
+.carousel-btn:hover{background:var(--fill2);transform:scale(1.08)}
+.carousel-btn:disabled{opacity:.3;cursor:default;transform:none}
+
+@media(max-width:640px){
+  .pcard{flex:0 0 78vw}
+  .pcard-img{height:180px}
+}
 
 /* ── EXPERIENCE ── */
 .exp-list{display:flex;flex-direction:column}
@@ -285,7 +317,7 @@ h2{
 }
 .cert-card:hover{background:var(--fill2)}
 .cert-icon{width:28px;height:28px;flex-shrink:0;background:#fff;border-radius:7px;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 3px rgba(0,0,0,.09)}
-.cert-icon svg{width:15px;height:15px}
+.cert-icon svg{width:18px;height:18px}
 .cert-title{font-size:.7rem;font-weight:600;color:var(--dark);margin-bottom:.18rem;line-height:1.4}
 .cert-meta{font-size:.6rem;color:var(--subtle)}
 .cert-verify{font-size:.6rem;color:var(--dark);display:block;margin-top:.28rem;font-weight:600}
@@ -302,6 +334,98 @@ h2{
 .extra-desc{font-size:.7rem;color:var(--muted);line-height:1.7;margin-bottom:.6rem}
 .extra-link{font-size:.64rem;color:var(--dark);font-weight:600}
 @media(max-width:700px){.extra-grid{grid-template-columns:1fr}}
+
+/* ── BEYOND ACCORDION ── */
+.beyond-wrap{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:0;border-radius:20px;overflow:hidden;
+  background:var(--fill);min-height:420px;
+}
+.beyond-list{display:flex;flex-direction:column;justify-content:center}
+.beyond-item{
+  border-bottom:1px solid var(--border);
+  cursor:pointer;
+}
+.beyond-item:last-child{border-bottom:none}
+.beyond-trigger{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.6rem 2rem;
+  transition:background .15s;
+}
+.beyond-trigger:hover{background:rgba(0,0,0,.02)}
+.beyond-trigger-left{display:flex;flex-direction:column;gap:.3rem}
+.beyond-label{
+  font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--subtle);font-weight:600;
+}
+.beyond-title{
+  font-size:1.05rem;font-weight:600;letter-spacing:-.02em;color:var(--dark);line-height:1.3;
+}
+.beyond-chevron{
+  font-size:.75rem;color:var(--muted);flex-shrink:0;margin-left:1rem;
+  transition:transform .35s cubic-bezier(.22,1,.36,1);
+}
+.beyond-item.open .beyond-chevron{transform:rotate(180deg)}
+.beyond-body{
+  max-height:0;overflow:hidden;
+  transition:max-height .45s cubic-bezier(.22,1,.36,1);
+}
+.beyond-item.open .beyond-body{max-height:200px}
+.beyond-body-inner{
+  padding:.2rem 2rem 1.6rem;
+  font-size:.82rem;color:var(--muted);line-height:1.9;
+}
+
+/* right: photo panel */
+.beyond-photo-panel{
+  position:relative;overflow:hidden;background:var(--fill2);
+}
+.beyond-photo{
+  position:absolute;inset:0;
+  width:100%;height:100%;object-fit:cover;
+  opacity:0;transition:opacity .5s cubic-bezier(.22,1,.36,1),transform .5s cubic-bezier(.22,1,.36,1);
+  transform:scale(1.04);
+}
+.beyond-photo.active{opacity:1;transform:scale(1)}
+
+@media(max-width:700px){
+  .beyond-wrap{grid-template-columns:1fr;grid-template-rows:auto 260px}
+  .beyond-photo-panel{grid-row:1}
+  .beyond-list{grid-row:2}
+}
+
+/* ── GLOBAL MOBILE ── */
+@media(max-width:640px){
+  section{padding:3.5rem 1.25rem}
+
+  /* Skills: 1 column */
+  .skills-grid{grid-template-columns:1fr}
+
+  /* Projects: stack image below text */
+  .pcard.has-img{grid-template-columns:1fr;grid-template-rows:auto auto}
+  .pcard-img{min-height:160px;max-height:200px}
+  .pcard-body{padding:1.4rem 1.25rem}
+
+  /* Experience: stack meta above content */
+  .exp-item{grid-template-columns:1fr;gap:.6rem;padding:1.5rem 0}
+  .exp-meta{display:flex;flex-wrap:wrap;align-items:baseline;gap:.4rem .8rem}
+  .exp-date{margin-bottom:0}
+  .exp-org{margin-bottom:0}
+  .exp-logo{margin-top:.4rem}
+
+  /* Certs: 1 column */
+  .certs-grid{grid-template-columns:1fr}
+
+  /* Beyond: 1 column */
+  #beyond > div[style*="grid"]{display:flex !important;flex-direction:column}
+
+  /* Section headers */
+  h2{font-size:clamp(1.7rem,7vw,2.4rem)}
+
+  /* Nav: reduce gap */
+  nav{gap:1.2rem;padding:0 1rem}
+  nav a{font-size:.68rem}
+}
 
 /* ── CONTACT ── */
 #contact{text-align:center;padding-bottom:7rem}
@@ -348,9 +472,17 @@ footer a:hover{color:var(--dark)}
 .modal-stat-num{font-size:1.2rem;font-weight:700;letter-spacing:-.03em;color:var(--dark)}
 .modal-stat-label{font-size:.58rem;color:var(--muted);margin-top:.2rem}
 
-/* ── FADE IN ── */
-.hidden{opacity:0;transform:translateY(16px)}
-.visible{opacity:1;transform:translateY(0);transition:opacity .5s ease,transform .5s ease}
+/* ── APPLE-STYLE SCROLL REVEAL ── */
+.fade{opacity:0;transform:translateY(40px);transition:opacity .75s cubic-bezier(.22,1,.36,1),transform .75s cubic-bezier(.22,1,.36,1)}
+.fade.visible{opacity:1;transform:translateY(0)}
+
+section{opacity:0;transform:translateY(48px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1)}
+section.visible{opacity:1;transform:translateY(0)}
+
+.fade:nth-child(2){transition-delay:.08s}
+.fade:nth-child(3){transition-delay:.16s}
+.fade:nth-child(4){transition-delay:.24s}
+.fade:nth-child(5){transition-delay:.32s}
 
 /* ── RESPONSIVE ── */
 @media(max-width:700px){
@@ -406,7 +538,7 @@ footer a:hover{color:var(--dark)}
         <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
         GitHub
       </a>
-      <a class="social-btn" href="https://github.com/Yejin-Hwang/Yejin-Hwang/raw/main/yejin_cv.pdf" target="_blank">
+      <a class="social-btn" href="Yejin_Hwang_Resume.pdf" target="_blank">
         <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm4 18H6V4h7v5h5v11zm-5-9H9v2h4v-2zm2 4H9v2h6v-2z"/></svg>
         Resume
       </a>
@@ -458,44 +590,30 @@ footer a:hover{color:var(--dark)}
         </div>
         <div class="ct-item">
           <div class="ct-dot"></div>
-          <div class="ct-year">2020</div>
-          <div class="ct-label">First Step into Data Science</div>
-          <div class="ct-desc">COVID sparked a deep curiosity about human health &amp; disease — led me to nutritional epidemiology and the power of data-driven research</div>
-        </div>
-        <div class="ct-item">
-          <div class="ct-dot"></div>
           <div class="ct-year">2022</div>
-          <div class="ct-label">Nutritional Epidemiology Lab</div>
-          <div class="ct-desc">Undergraduate researcher at CliNE Lab (SKKU) under Prof. Jinhee Hur — bridging biotechnology and data analysis</div>
-        </div>
-        <div class="ct-item">
-          <div class="ct-dot"></div>
-          <div class="ct-year">2022–23</div>
           <div class="ct-label">Samsung Medical Center</div>
-          <div class="ct-desc">Clinical data researcher · oncology studies (esophageal &amp; breast cancer) · Johns Hopkins-affiliated PIs · real-world patient data</div>
+          <div class="ct-desc">Clinical Data Analyst · oncology studies (esophageal &amp; breast cancer) · Johns Hopkins-affiliated PIs · real-world patient data</div>
         </div>
         <div class="ct-item">
           <div class="ct-dot"></div>
           <div class="ct-year">2024</div>
           <div class="ct-label">M.S. Data Science — TAMUCC, USA</div>
-          <div class="ct-desc">Full scholarship · GPA 4.0 · expanded into ML, DL, NLP, time-series forecasting</div>
+          <div class="ct-desc">Graduate Fellow · GPA 4.0 · full scholarship · ML, DL, NLP, time-series forecasting · 3× conference speaker</div>
         </div>
         <div class="ct-item ct-item--last">
           <div class="ct-dot ct-dot--accent"></div>
           <div class="ct-year">2026</div>
           <div class="ct-label">Now</div>
-          <div class="ct-desc">Thesis submitted to KDD 2026 · Business Analyst @ Samsung Electronics America · 3-year STEM OPT</div>
+          <div class="ct-desc">Thesis submitted to KDD 2026 · M.S. defended · 3-year STEM OPT · open to opportunities across the U.S.</div>
         </div>
       </div>
-
-      <p>3-year STEM OPT available · open to opportunities across the U.S.</p>
     </div>
   </div>
 
   <div class="badges-row">
     <a href="https://www.skku.edu/skku/campus/skk_comm/popup_news_en.do?mode=view&articleNo=101892" target="_blank" class="badge fade">SKKU President Award</a>
     <div class="badge fade">KDD 2026 Submission</div>
-    <div class="badge fade">2× Conference Speaker</div>
+    <div class="badge fade">3× Conference Speaker</div>
     <div class="badge fade">Samsung Medical Center</div>
     <div class="badge fade">GPA 4.0 Graduate Fellow</div>
   </div>
@@ -583,74 +701,81 @@ footer a:hover{color:var(--dark)}
   <div class="sec-label">Featured Projects</div>
   <h2>Selected Projects</h2>
   <p class="sec-sub">From Reddit rabbit holes to hospital data — projects that started with a question I couldn't stop thinking about.</p>
-  <div class="project-list">
 
-    <a class="pcard has-img fade" href="https://github.com/Yejin-Hwang/finance-rag" target="_blank">
-      <div class="pcard-body">
-        <div class="ptag">RAG · LLM · Financial NLP · Spring 2026</div>
-        <div class="pname">Finance RAG — Financial QA over SEC 10-K Filings</div>
-        <div class="pdesc">Built a full RAG pipeline that answers financial analyst questions grounded in SEC 10-K filings from Apple, Microsoft, Tesla, Google, and Amazon. Evaluated how chunk size and top-k retrieval affect accuracy and latency across 90 runs. Best config: <em>chunk_size=256, top-k=3 → accuracy 0.9</em>.</div>
-        <div class="ptechs"><span class="ptech">RAG</span><span class="ptech">FAISS</span><span class="ptech">GPT-3.5</span><span class="ptech">Sentence-BERT</span><span class="ptech">SEC 10-K</span><span class="ptech">Financial NLP</span><span class="ptech">PyMuPDF</span><span class="ptech">Python</span></div>
-        <div class="plink">View on GitHub →</div>
-      </div>
-      <div class="pcard-img">
-        <img src="https://github.com/Yejin-Hwang/finance-rag/raw/main/rag_pipeline.png" alt="Finance RAG Pipeline" onerror="this.parentElement.style.background='var(--bg2)';this.style.display='none'"/>
-      </div>
-    </a>
+  <div class="project-carousel-wrap">
+    <div class="project-carousel" id="projectCarousel">
 
-    <div class="pcard has-img fade" onclick="openModal('thesis')" style="cursor:pointer">
-      <div class="pcard-body">
-        <div class="ptag">Thesis · KDD 2026 Under Review</div>
-        <div class="pname">Can Reddit Predict the Stock Market?</div>
-        <div class="pdesc">It started with a late-night scroll through a Korean stock community — someone with a "stock guru" badge posted about quantum computing stocks. I bought in, watched them jump 200%, and thought: <em>is this actually signal?</em> That curiosity became a full research project combining Reddit sentiment + deep learning Transformers.</div>
-        <div class="ptechs"><span class="ptech">TFT</span><span class="ptech">FinBERT</span><span class="ptech">PyTorch</span><span class="ptech">NLP</span><span class="ptech">Reddit API</span><span class="ptech">Hugging Face</span></div>
-        <div class="plink">Read the Full Story →</div>
+      <div class="pcard fade" onclick="openModal('thesis')" style="cursor:pointer">
+        <div class="pcard-img">
+          <img src="img_financial.png" alt="Financial Forecasting" onerror="this.parentElement.style.background='var(--fill)';this.style.display='none'"/>
+        </div>
+        <div class="pcard-body">
+          <div class="ptag">Thesis · KDD 2026 Under Review</div>
+          <div class="pname">Can Reddit Predict the Stock Market?</div>
+          <div class="pdesc">Combining Reddit sentiment (FinBERT) with deep learning Transformers (TFT) to forecast large-cap stock prices. IC +213.6%, Sharpe 2.74, MDD −6.9%.</div>
+          <div class="ptechs"><span class="ptech">TFT</span><span class="ptech">FinBERT</span><span class="ptech">PyTorch</span><span class="ptech">NLP</span><span class="ptech">Reddit API</span><span class="ptech">Hugging Face</span></div>
+          <div class="plink">Read the Full Story →</div>
+        </div>
       </div>
-      <div class="pcard-img">
-        <img src="img_financial.png" alt="Financial Forecasting" onerror="this.parentElement.style.background='var(--bg2)';this.style.display='none'"/>
+
+      <a class="pcard fade" href="https://github.com/Yejin-Hwang/finance-rag" target="_blank">
+        <div class="pcard-img">
+          <img src="https://github.com/Yejin-Hwang/finance-rag/raw/main/rag_pipeline.png" alt="Finance RAG Pipeline" onerror="this.parentElement.style.background='var(--fill)';this.style.display='none'"/>
+        </div>
+        <div class="pcard-body">
+          <div class="ptag">RAG · LLM · Financial NLP · Spring 2026</div>
+          <div class="pname">Finance RAG — QA over SEC 10-K Filings</div>
+          <div class="pdesc">Full RAG pipeline answering financial analyst questions grounded in SEC 10-K filings from Apple, Microsoft, Tesla, Google, and Amazon. Best config: chunk_size=256, top-k=3 → accuracy 0.9.</div>
+          <div class="ptechs"><span class="ptech">RAG</span><span class="ptech">FAISS</span><span class="ptech">GPT-3.5</span><span class="ptech">Sentence-BERT</span><span class="ptech">SEC 10-K</span><span class="ptech">Python</span></div>
+          <div class="plink">View on GitHub →</div>
+        </div>
+      </a>
+
+      <a class="pcard fade" href="https://github.com/Yejin-Hwang/Reddit-Driven-Stock-Forecasting" target="_blank">
+        <div class="pcard-img">
+          <img src="img_reddit.png" alt="Reddit Stock Forecasting" onerror="this.parentElement.style.background='var(--fill)';this.style.display='none'"/>
+        </div>
+        <div class="pcard-body">
+          <div class="ptag">Precursor to Thesis · NLP · Time-Series</div>
+          <div class="pname">Reddit-Driven Stock Forecasting</div>
+          <div class="pdesc">The earlier version — TSLA & NVDA with ARIMA, TimesFM, Chronos, and TFT. Results were promising enough (RMSE ↓40.2% for TSLA, ↓87.9% for NVDA) that I kept going.</div>
+          <div class="ptechs"><span class="ptech">TFT</span><span class="ptech">Chronos-T5</span><span class="ptech">VADER</span><span class="ptech">TimesFM</span><span class="ptech">ARIMA</span></div>
+          <div class="plink">View on GitHub →</div>
+        </div>
+      </a>
+
+      <div class="pcard fade" onclick="openModal('tamu')" style="cursor:pointer">
+        <div class="pcard-img">
+          <img src="https://public.tableau.com/static/images/ta/tamuenrollment/Dashboard1/1.png" alt="TAMU Enrollment Dashboard"/>
+        </div>
+        <div class="pcard-body">
+          <div class="ptag">Tableau · Education · <span style="color:#e07b39;font-weight:600">Ongoing</span></div>
+          <div class="pname">TAMU Enrollment Trends</div>
+          <div class="pdesc">Enrollment trends and demographic shifts across the Texas A&M System — built on real IPEDS data cleaned from scratch. Full visualization pipeline in Tableau.</div>
+          <div class="ptechs"><span class="ptech">Tableau Public</span><span class="ptech">Power Query</span><span class="ptech">SQL</span><span class="ptech">Python · Pandas</span></div>
+          <div class="plink">Open Interactive Dashboard →</div>
+        </div>
       </div>
+
+      <div class="pcard fade" onclick="openModal('apple')" style="cursor:pointer">
+        <div class="pcard-img">
+          <img src="https://public.tableau.com/static/images/Ap/AppleinKoreaADataStory/Dashboard3/1.png" alt="Apple in Korea Dashboard"/>
+        </div>
+        <div class="pcard-body">
+          <div class="ptag">Tableau · Consumer Brand · Korea Market</div>
+          <div class="pname">Apple in Korea — A Data Story</div>
+          <div class="pdesc">Apple's brand performance in the Korean market — one of the world's most brand-conscious consumer markets. Real analytical storytelling with simulated sales data.</div>
+          <div class="ptechs"><span class="ptech">Tableau Public</span><span class="ptech">Brand Analysis</span><span class="ptech">Consumer Insights</span></div>
+          <div class="plink">Open Interactive Dashboard →</div>
+        </div>
+      </div>
+
     </div>
 
-    <a class="pcard has-img fade" href="https://github.com/Yejin-Hwang/Reddit-Driven-Stock-Forecasting" target="_blank">
-      <div class="pcard-body">
-        <div class="ptag">Precursor to Thesis · NLP · Time-Series</div>
-        <div class="pname">Reddit-Driven Stock Forecasting</div>
-        <div class="pdesc">The earlier version that started it all — before the thesis expanded the scope. Focused on TSLA & NVDA with ARIMA, TimesFM, Chronos, and TFT. The results were promising enough (RMSE ↓40.2% for TSLA, ↓87.9% for NVDA) that I kept going: more tickers, richer sentiment features, deeper models.</div>
-        <div class="ptechs"><span class="ptech">TFT</span><span class="ptech">Chronos-T5</span><span class="ptech">VADER</span><span class="ptech">TimesFM</span><span class="ptech">ARIMA</span></div>
-        <div class="plink">View on GitHub →</div>
-      </div>
-      <div class="pcard-img">
-        <img src="img_reddit.png" alt="Reddit Stock Forecasting" onerror="this.parentElement.style.background='var(--bg2)';this.style.display='none'"/>
-      </div>
-    </a>
-
-    <div class="pcard has-img fade" onclick="openModal('tamu')" style="cursor:pointer">
-      <div class="pcard-body">
-        <div class="ptag">Tableau · Education · Demographics · <span style="color:#e07b39;font-weight:600">Ongoing</span></div>
-        <div class="pname">TAMU Enrollment Trends</div>
-        <div class="pdesc">Analyzing annual enrollment trends and demographic shifts across the Texas A&M University System — built on real-world IPEDS data (cleaned and processed from scratch). Currently in progress: cleaning raw institutional data, building SQL queries, and constructing the full visualization pipeline.</div>
-        <div style="margin:.5rem 0 .6rem;font-size:.68rem;color:var(--muted)">Data source: <a href="https://nces.ed.gov/ipeds/datacenter/DataFiles.aspx?year=2024&surveyNumber=2&sid=5fd611ff-5df5-470d-a511-6d72709dfbbf&rtid=7" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:500" onclick="event.stopPropagation()">NCES IPEDS 2024 ↗</a></div>
-        <div class="ptechs"><span class="ptech">Tableau Public</span><span class="ptech">Power Query</span><span class="ptech">SQL</span><span class="ptech">Python · Pandas</span><span class="ptech">Data Cleaning</span></div>
-        <div class="plink">Open Interactive Dashboard →</div>
-      </div>
-      <div class="pcard-img">
-        <img src="https://public.tableau.com/static/images/ta/tamuenrollment/Dashboard1/1.png" alt="TAMU Enrollment Dashboard"/>
-      </div>
+    <div class="carousel-nav">
+      <button class="carousel-btn" id="carouselPrev" onclick="scrollCarousel(-1)">←</button>
+      <button class="carousel-btn" id="carouselNext" onclick="scrollCarousel(1)">→</button>
     </div>
-
-    <div class="pcard has-img fade" onclick="openModal('apple')" style="cursor:pointer">
-      <div class="pcard-body">
-        <div class="ptag">Tableau · Consumer Brand · Market Analysis</div>
-        <div class="pname">Apple in Korea — A Data Story</div>
-        <div class="pdesc">Deep-diving into Apple's brand performance and product line popularity in the Korean market — how a global tech brand plays out in one of the world's most brand-conscious consumer markets. Built with simulated sales data to practice real analytical storytelling.</div>
-        <div class="ptechs"><span class="ptech">Tableau Public</span><span class="ptech">Brand Analysis</span><span class="ptech">Consumer Insights</span><span class="ptech">Korea Market</span></div>
-        <div class="plink">Open Interactive Dashboard →</div>
-      </div>
-      <div class="pcard-img">
-        <img src="https://public.tableau.com/static/images/Ap/AppleinKoreaADataStory/Dashboard3/1.png" alt="Apple in Korea Dashboard"/>
-      </div>
-    </div>
-
   </div>
 </section>
 
@@ -710,16 +835,18 @@ footer a:hover{color:var(--dark)}
 
     <div class="exp-item fade">
       <div class="exp-meta">
-        <div class="exp-date">May 2026 – Present</div>
-        <div class="exp-org">Samsung Electronics America</div>
-        <div class="exp-loc">Plano, TX</div>
-        <img src="logo_samsung_nobg.png" alt="Samsung Electronics America" class="exp-logo"/>
+        <div class="exp-date">Sep 2024 – May 2026</div>
+        <div class="exp-org">TAMUCC · AI Lab</div>
+        <div class="exp-loc">Corpus Christi, TX</div>
+        <img src="logo_tamucc_nobg.png" alt="TAMUCC" class="exp-logo"/>
       </div>
       <div>
-        <div class="exp-title">Business Analyst <span style="font-size:.7rem;color:var(--accent);font-weight:400">· Finance Team</span></div>
+        <div class="exp-title">Graduate Research Assistant / Teaching Assistant</div>
         <ul class="exp-items">
-          <li>Incoming role on the Finance team at Samsung Electronics America.</li>
-          <li>Fine-tuning large foundation models; building scalable real-time inference pipelines.</li>
+          <li>Graduate Fellowship — Full tuition scholarship.</li>
+          <li>Thesis research at the intersection of financial time-series modeling and social sentiment analysis; submitted to KDD 2026 under advisor Dr. Sreelekha Guggilam.</li>
+          <li>Built end-to-end forecasting pipeline across 10 U.S. equities over 1,000 trading days; produced weekly performance reports (RMSE, MAE, IC) and dashboards communicating forecast results and trend analysis to faculty and research stakeholders.</li>
+          <li>Held office hours and assisted instruction for undergraduate math courses (Calculus I/II, Precalculus, College Algebra).</li>
         </ul>
       </div>
     </div>
@@ -732,7 +859,7 @@ footer a:hover{color:var(--dark)}
         <img src="logo_samsung_nobg.png" alt="Samsung Medical Center" class="exp-logo"/>
       </div>
       <div>
-        <div class="exp-title">Clinical Data Research Assistant</div>
+        <div class="exp-title">Clinical Data Analyst</div>
         <ul class="exp-items">
           <li>Epidemiological studies under Prof. Juhee Cho (Johns Hopkins) and Prof. Danbee Kang.</li>
           <li>Managed & cleaned clinical datasets for oncological and rare disease research.</li>
@@ -751,7 +878,7 @@ footer a:hover{color:var(--dark)}
       <div>
         <div class="exp-title">Math Instructor</div>
         <ul class="exp-items">
-          <li>Instructed Calculus, Statistics, and Linear Algebra in Seoul's most competitive academic district.</li>
+          <li>Instructed Algebra, Geometry, Calculus, and Statistics in Seoul's most competitive academic district.</li>
           <li>Specialized in Mathematical Olympiad (KMO) and Pre-Medical track preparation.</li>
         </ul>
       </div>
@@ -784,44 +911,98 @@ footer a:hover{color:var(--dark)}
   <h2>Beyond the Lab</h2>
   <p class="sec-sub">Conferences, communities, and moments that shaped who I am as a researcher.</p>
 
-  <div class="extra-grid fade">
+  <div class="project-carousel-wrap">
+    <div class="project-carousel" id="confCarousel">
 
-    <a class="extra-card" href="https://www.skku.edu/skku/campus/skk_comm/popup_news_en.do?mode=view&articleNo=101892" target="_blank">
-      <div class="extra-img-wrap">
-        <img src="photo_skku_award.jpg" alt="SKKU President Award" class="extra-img" style="object-position:center 35%"/>
-      </div>
-      <div class="extra-body">
-        <div class="ptag" style="margin-bottom:.35rem">SKKU President Award</div>
-        <div class="extra-title">1st Place · SKKU Biotech Jamboree</div>
-        <p class="extra-desc">Awarded the President's Prize (총장상) — 1st place at the 11th SKKU Biotech Jamboree. Interdisciplinary research at the intersection of biotechnology and data, presented to university leadership and faculty judges.</p>
-        <span class="extra-link">View Official Announcement →</span>
-      </div>
-    </a>
+      <!-- 1. COTS -->
+      <a class="pcard fade" href="https://www.linkedin.com/feed/update/urn:li:activity:7449219600996540417/" target="_blank">
+        <div class="pcard-img">
+          <img src="photo_cots_poster.png" alt="COTS 2026 UT Austin" style="object-position:center 20%" onerror="this.parentElement.style.background='var(--fill)';this.style.display='none'"/>
+        </div>
+        <div class="pcard-body">
+          <div class="ptag">Conference Speaker · April 2026</div>
+          <div class="pname">Conference of Texas Statisticians (COTS)</div>
+          <div class="pdesc">Presented thesis research at UT Austin — ML/AI section. Attendees stopped to read the poster, took photos, asked questions I hadn't anticipated. Those moments reminded me why sharing research in person matters.</div>
+          <div class="ptechs"><span class="ptech">UT Austin</span><span class="ptech">ML/AI Section</span><span class="ptech">Poster Presentation</span></div>
+          <div class="plink">View on LinkedIn →</div>
+        </div>
+      </a>
 
-    <a class="extra-card" href="https://www.linkedin.com/posts/yejin-data_timeseriesforecasting-datascience-machinelearning-activity-7314452114418606080-INCR" target="_blank">
-      <div class="extra-img-wrap">
-        <img src="photo_conference.jpg" alt="9th Coastal Bend Math & Statistics Conference" class="extra-img" style="object-position:center 30%"/>
-      </div>
-      <div class="extra-body">
-        <div class="ptag" style="margin-bottom:.35rem">Conference Speaker</div>
-        <div class="extra-title">9th Coastal Bend Mathematics & Statistics Conference</div>
-        <p class="extra-desc">Presented thesis research at Texas A&M International University, Laredo, TX · April 2025. One of the most nerve-wracking and rewarding experiences — standing at a podium and defending your work to a room full of academics.</p>
-        <span class="extra-link">View on LinkedIn →</span>
-      </div>
-    </a>
+      <!-- 2. SHPE -->
+      <a class="pcard fade" href="https://www.linkedin.com/posts/yejin-data_shpe2025-shpe-stem-activity-7391023619130232833-VoVG" target="_blank">
+        <div class="pcard-img">
+          <img src="photo_shpe.jpg" alt="SHPE 2025" style="object-position:center 40%;width:100%;height:100%;object-fit:cover;display:block" onerror="this.parentElement.style.background='var(--fill)';this.style.display='none'"/>
+        </div>
+        <div class="pcard-body">
+          <div class="ptag">SHPE Member · 2025</div>
+          <div class="pname">SHPE National Convention</div>
+          <div class="pdesc">Attended the Society of Hispanic Professional Engineers National Convention — one of the largest STEM career events in the U.S. Career fair, networking, and a reminder that diverse communities make science stronger.</div>
+          <div class="ptechs"><span class="ptech">STEM Networking</span><span class="ptech">Career Fair</span></div>
+          <div class="plink">View on LinkedIn →</div>
+        </div>
+      </a>
 
-    <a class="extra-card" href="https://www.linkedin.com/posts/yejin-data_shpe2025-shpe-stem-activity-7391023619130232833-VoVG" target="_blank">
-      <div class="extra-img-wrap">
-        <img src="photo_shpe.jpg" alt="SHPE 2025 National Convention" class="extra-img" style="object-position:center 40%"/>
-      </div>
-      <div class="extra-body">
-        <div class="ptag" style="margin-bottom:.35rem">SHPE Member</div>
-        <div class="extra-title">SHPE 2025 National Convention</div>
-        <p class="extra-desc">Attended the Society of Hispanic Professional Engineers National Convention — one of the largest STEM career events in the U.S. Career fair, networking, and a reminder that diverse communities make science stronger.</p>
-        <span class="extra-link">View on LinkedIn →</span>
-      </div>
-    </a>
+      <!-- 3. SKKU Award -->
+      <a class="pcard fade" href="https://www.skku.edu/skku/campus/skk_comm/popup_news_en.do?mode=view&articleNo=101892" target="_blank">
+        <div class="pcard-img">
+          <img src="photo_skku_award.jpg" alt="SKKU President Award" style="object-position:center 35%;width:100%;height:100%;object-fit:cover;display:block" onerror="this.parentElement.style.background='var(--fill)';this.style.display='none'"/>
+        </div>
+        <div class="pcard-body">
+          <div class="ptag">SKKU President Award</div>
+          <div class="pname">1st Place · SKKU Biotech Jamboree</div>
+          <div class="pdesc">Awarded the President's Prize (총장상) — 1st place at the 11th SKKU Biotech Jamboree. Interdisciplinary research at the intersection of biotechnology and data, presented to university leadership and faculty judges.</div>
+          <div class="ptechs"><span class="ptech">Seoul · Korea</span><span class="ptech">R&D Innovation</span></div>
+          <div class="plink">View Official Announcement →</div>
+        </div>
+      </a>
 
+      <!-- 4. 10th Coastal Bend -->
+      <a class="pcard fade" href="https://www.linkedin.com/feed/update/urn:li:activity:7449219600996540417/" target="_blank">
+        <div class="pcard-img">
+          <img src="photo_coastal_bend_badge.jpg" alt="10th Coastal Bend Conference" style="object-position:center 40%" onerror="this.parentElement.style.background='var(--fill)';this.style.display='none'"/>
+        </div>
+        <div class="pcard-body">
+          <div class="ptag">Conference Speaker · April 18, 2026</div>
+          <div class="pname">10th Coastal Bend Mathematics & Statistics Conference</div>
+          <div class="pdesc">Presented updated thesis research at TAMUCC — building on last year's talk with new results, deeper sentiment analysis, and expanded model comparisons.</div>
+          <div class="ptechs"><span class="ptech">TAMUCC · Corpus Christi</span><span class="ptech">Statistics</span><span class="ptech">Talk</span></div>
+          <div class="plink">View on LinkedIn →</div>
+        </div>
+      </a>
+
+      <!-- 5. 9th Coastal Bend -->
+      <a class="pcard fade" href="https://www.linkedin.com/posts/yejin-data_timeseriesforecasting-datascience-machinelearning-activity-7314452114418606080-INCR" target="_blank">
+        <div class="pcard-img">
+          <img src="photo_conference.jpg" alt="9th Coastal Bend Conference" style="object-position:center 30%" onerror="this.parentElement.style.background='var(--fill)';this.style.display='none'"/>
+        </div>
+        <div class="pcard-body">
+          <div class="ptag">Conference Speaker · April 2025</div>
+          <div class="pname">9th Coastal Bend Mathematics & Statistics Conference</div>
+          <div class="pdesc">Presented thesis research at Texas A&M International University, Laredo, TX. One of the most nerve-wracking and rewarding experiences — standing at a podium and defending your work to a room full of academics.</div>
+          <div class="ptechs"><span class="ptech">TAMIU · Laredo TX</span><span class="ptech">Talk</span></div>
+          <div class="plink">View on LinkedIn →</div>
+        </div>
+      </a>
+
+      <!-- 6. NMSU/UTEP -->
+      <a class="pcard fade" href="https://www.linkedin.com/in/yejin-data" target="_blank">
+        <div class="pcard-img">
+          <img src="photo_conference.jpg" alt="Joint NMSU/UTEP Conference" style="object-position:center 30%" onerror="this.parentElement.style.background='var(--fill)';this.style.display='none'"/>
+        </div>
+        <div class="pcard-body">
+          <div class="ptag">Conference Speaker · 2025</div>
+          <div class="pname">Joint NMSU/UTEP Mathematics & CS Conference</div>
+          <div class="pdesc">Oral presentation on multimodal time-series forecasting with Reddit sentiment — presented thesis research to an interdisciplinary audience of mathematicians and computer scientists.</div>
+          <div class="ptechs"><span class="ptech">NMSU/UTEP</span><span class="ptech">Talk</span></div>
+          <div class="plink">View on LinkedIn →</div>
+        </div>
+      </a>
+
+    </div>
+    <div class="carousel-nav">
+      <button class="carousel-btn" onclick="scrollConf(-1)">←</button>
+      <button class="carousel-btn" onclick="scrollConf(1)">→</button>
+    </div>
   </div>
 </section>
 
@@ -917,9 +1098,19 @@ footer a:hover{color:var(--dark)}
         <span class="cert-verify">View Certificate ↗</span>
       </div>
     </a>
+    <a class="cert-card fade" href="https://learn.deeplearning.ai/accomplishments" target="_blank">
+      <div class="cert-icon" style="background:none;box-shadow:none;padding:0;width:28px;height:28px;flex-shrink:0">
+        <img src="logo_deeplearning.png" style="width:28px;height:28px;border-radius:50%;object-fit:cover"/>
+      </div>
+      <div>
+        <div class="cert-title">Retrieval Augmented Generation (RAG)</div>
+        <div class="cert-meta">DeepLearning.AI · Mar 2026</div>
+        <span class="cert-verify">View Certificate ↗</span>
+      </div>
+    </a>
     <a class="cert-card fade" href="https://www.linkedin.com/learning/certificates/" target="_blank">
-      <div class="cert-icon">
-        <svg viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="4" fill="#0A66C2"/><text x="4" y="17" font-family="Arial" font-size="11" font-weight="bold" fill="white">in</text></svg>
+      <div class="cert-icon" style="background:none;box-shadow:none;padding:0;width:28px;height:28px;overflow:hidden;border-radius:5px">
+        <img src="logo_linkedin_icon.png" style="width:28px;height:28px;object-fit:cover"/>
       </div>
       <div>
         <div class="cert-title">SAP S/4HANA Essential Training</div>
@@ -928,8 +1119,8 @@ footer a:hover{color:var(--dark)}
       </div>
     </a>
     <a class="cert-card fade" href="https://www.linkedin.com/learning/certificates/" target="_blank">
-      <div class="cert-icon">
-        <svg viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="4" fill="#0A66C2"/><text x="4" y="17" font-family="Arial" font-size="11" font-weight="bold" fill="white">in</text></svg>
+      <div class="cert-icon" style="background:none;box-shadow:none;padding:0;width:28px;height:28px;overflow:hidden;border-radius:5px">
+        <img src="logo_linkedin_icon.png" style="width:28px;height:28px;object-fit:cover"/>
       </div>
       <div>
         <div class="cert-title">SAP ERP Essential Training</div>
@@ -948,21 +1139,57 @@ footer a:hover{color:var(--dark)}
   <h2>Beyond Work</h2>
   <p class="sec-sub">The things that keep me human.</p>
 
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem">
+  <div class="beyond-wrap fade">
 
-    <div style="background:var(--fill);border-radius:14px;padding:1.4rem 1.5rem">
-      <div style="font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--subtle);font-weight:600;margin-bottom:.55rem">Aesthetics · Fashion · Music</div>
-      <p style="font-size:.78rem;color:var(--muted);line-height:1.8">Drawn to quiet design, film tones, and things that don't try too hard. Style is how I communicate without words. K-pop, jazz, house, R&amp;B — genre-fluid.</p>
+    <!-- left: accordion list -->
+    <div class="beyond-list">
+
+      <div class="beyond-item open" data-photo="photo_aesthetic.jpg" onclick="toggleBeyond(this)">
+        <div class="beyond-trigger">
+          <div class="beyond-trigger-left">
+            <div class="beyond-label">Aesthetics · Fashion · Music</div>
+            <div class="beyond-title">Design, sound, and style.</div>
+          </div>
+          <div class="beyond-chevron">⌄</div>
+        </div>
+        <div class="beyond-body">
+          <div class="beyond-body-inner">I like clean design, good visuals, and music that sets the mood. I used to play bass in a university band — these days, I'm more of a listener. K-pop, jazz, house, R&amp;B — I'm always digging for something that just feels right.</div>
+        </div>
+      </div>
+
+      <div class="beyond-item" data-photo="photo learner.jpg" onclick="toggleBeyond(this)">
+        <div class="beyond-trigger">
+          <div class="beyond-trigger-left">
+            <div class="beyond-label">Healthcare · Science · Tech</div>
+            <div class="beyond-title">Where curiosity meets impact.</div>
+          </div>
+          <div class="beyond-chevron">⌄</div>
+        </div>
+        <div class="beyond-body">
+          <div class="beyond-body-inner">I started in healthcare, which shaped how I think about impact. That curiosity led me to data and AI — trying to understand complex systems and make them more useful, more human.</div>
+        </div>
+      </div>
+
+      <div class="beyond-item" data-photo="photo_travel.jpg" onclick="toggleBeyond(this)">
+        <div class="beyond-trigger">
+          <div class="beyond-trigger-left">
+            <div class="beyond-label">Languages · Travel</div>
+            <div class="beyond-title">New places, new ways of seeing.</div>
+          </div>
+          <div class="beyond-chevron">⌄</div>
+        </div>
+        <div class="beyond-body">
+          <div class="beyond-body-inner">Korean, English, Japanese (learning). I like being in new places, hearing different languages, and noticing the small differences in how people think and connect. It's a quiet way of expanding how I see the world.</div>
+        </div>
+      </div>
+
     </div>
 
-    <div style="background:var(--fill);border-radius:14px;padding:1.4rem 1.5rem">
-      <div style="font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--subtle);font-weight:600;margin-bottom:.55rem">Healthcare · Science</div>
-      <p style="font-size:.78rem;color:var(--muted);line-height:1.8">My path started in a hospital in Seoul — that curiosity about medicine, clinical data, and where AI reshapes care never left.</p>
-    </div>
-
-    <div style="background:var(--fill);border-radius:14px;padding:1.4rem 1.5rem">
-      <div style="font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--subtle);font-weight:600;margin-bottom:.55rem">Languages · Travel</div>
-      <p style="font-size:.78rem;color:var(--muted);line-height:1.8">Korean · English · Japanese (learning). Corpus Christi sunsets, Korean countryside roads, cities I haven't reached yet. Every new place — and every new language — recalibrates something.</p>
+    <!-- right: photo panel -->
+    <div class="beyond-photo-panel">
+      <img class="beyond-photo active" id="bphoto-0" src="photo_aesthetic.jpg" alt="Aesthetics"/>
+      <img class="beyond-photo" id="bphoto-1" src="photo learner.jpg" alt="Learning"/>
+      <img class="beyond-photo" id="bphoto-2" src="photo_travel.jpg" alt="Travel"/>
     </div>
 
   </div>
@@ -974,7 +1201,7 @@ footer a:hover{color:var(--dark)}
 <section id="contact">
   <div class="sec-label">Get in Touch</div>
   <h2>Let's connect</h2>
-  <p class="sec-sub">Open to data roles, research collaborations, and interesting conversations. 3-year STEM OPT available.</p>
+  <p class="sec-sub" style="margin-left:auto;margin-right:auto;text-align:center">Open to data roles, research collaborations, and interesting conversations. 3-year STEM OPT available.</p>
 
   <div class="contact-links">
     <div class="clink" style="cursor:default">
@@ -1164,16 +1391,86 @@ window.closeModal = function() {
 }
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-// Fade-in on scroll
-const fades = document.querySelectorAll('.fade');
-if ('IntersectionObserver' in window) {
-  fades.forEach(f => f.classList.add('hidden'));
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){e.target.classList.remove('hidden');e.target.classList.add('visible');io.unobserve(e.target);}
+window.scrollConf = function(dir) {
+  const c = document.getElementById('confCarousel');
+  if (!c) return;
+  const cardW = c.querySelector('.pcard').offsetWidth + 16;
+  c.scrollBy({ left: dir * cardW, behavior: 'smooth' });
+}
+
+// Beyond accordion
+window.toggleBeyond = function(item) {
+  const items = document.querySelectorAll('.beyond-item');
+  const photos = document.querySelectorAll('.beyond-photo');
+  const idx = Array.from(items).indexOf(item);
+
+  items.forEach((el, i) => {
+    el.classList.toggle('open', i === idx);
+  });
+  photos.forEach((ph, i) => {
+    ph.classList.toggle('active', i === idx);
+  });
+}
+
+// Carousel
+window.scrollCarousel = function(dir) {
+  const c = document.getElementById('projectCarousel');
+  if (!c) return;
+  const cardW = c.querySelector('.pcard').offsetWidth + 16;
+  c.scrollBy({ left: dir * cardW, behavior: 'smooth' });
+}
+
+// Drag to scroll
+function initCarouselDrag() {
+  ['projectCarousel','confCarousel'].forEach(id => {
+    const c = document.getElementById(id);
+    if (!c) return;
+    let isDragging = false, startX, scrollLeft;
+    c.addEventListener('mousedown', e => {
+      isDragging = true; startX = e.pageX - c.offsetLeft; scrollLeft = c.scrollLeft;
+      c.classList.add('is-dragging');
     });
-  },{threshold:0.08});
-  fades.forEach(f=>io.observe(f));
+    document.addEventListener('mouseup', () => { isDragging = false; c.classList.remove('is-dragging'); });
+    c.addEventListener('mousemove', e => {
+      if (!isDragging) return;
+      e.preventDefault();
+      const x = e.pageX - c.offsetLeft;
+      c.scrollLeft = scrollLeft - (x - startX) * 1.2;
+    });
+    c.addEventListener('mouseleave', () => { isDragging = false; c.classList.remove('is-dragging'); });
+  });
+}
+initCarouselDrag();
+
+// Apple-style scroll reveal
+if ('IntersectionObserver' in window) {
+  // Section-level reveal
+  const sectionIO = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        sectionIO.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.07, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('section').forEach(s => sectionIO.observe(s));
+
+  // Hero section visible immediately
+  const hero = document.getElementById('home');
+  if (hero) hero.classList.add('visible');
+
+  // Element-level fade with stagger
+  const fadeIO = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        fadeIO.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+
+  document.querySelectorAll('.fade').forEach(f => fadeIO.observe(f));
 }
 
 
