@@ -203,15 +203,35 @@ h2{
 .ct-desc{font-size:.69rem;color:var(--muted);line-height:1.55;grid-row:2;grid-column:2;margin-top:.08rem}
 @media(max-width:600px){.career-timeline{padding-left:1rem}}
 
-/* ── ABOUT PHOTO ── */
-.about-photo-row{display:grid;grid-template-columns:160px 1fr;gap:2.2rem;align-items:start;margin-bottom:2rem}
-.about-photo-wrap{flex-shrink:0}
-.about-photo{width:160px;height:210px;object-fit:cover;object-position:top center;border-radius:12px;display:block;box-shadow:0 4px 20px rgba(0,0,0,.09)}
-.about-photo-fallback{width:160px;height:210px;border-radius:12px;background:var(--fill);display:none;flex-direction:column;align-items:center;justify-content:center;font-size:2rem}
-.about-photo-caption{font-size:.58rem;color:var(--subtle);text-align:center;margin-top:.5rem;line-height:1.4}
-@media(max-width:600px){
-  .about-photo-row{grid-template-columns:1fr}
-  .about-photo,.about-photo-fallback{width:100%;height:200px}
+/* ── ABOUT PHOTO — full bleed split ── */
+.about-split{
+  display:grid;grid-template-columns:1fr 420px;
+  gap:0;align-items:stretch;
+  background:var(--fill);border-radius:20px;
+  overflow:hidden;margin-bottom:2rem;
+  min-height:480px;
+}
+.about-split-text{
+  padding:3rem 3rem 2.5rem;
+  display:flex;flex-direction:column;justify-content:center;
+}
+.about-split-photo{
+  position:relative;overflow:hidden;background:#e8e8ed;
+}
+.about-split-photo img{
+  width:100%;height:100%;object-fit:cover;
+  object-position:center top;display:block;
+}
+.about-photo-caption{
+  position:absolute;bottom:.8rem;left:50%;transform:translateX(-50%);
+  font-size:.58rem;color:rgba(255,255,255,.8);
+  background:rgba(0,0,0,.28);backdrop-filter:blur(8px);
+  padding:.25rem .7rem;border-radius:980px;white-space:nowrap;
+}
+@media(max-width:768px){
+  .about-split{grid-template-columns:1fr;grid-template-rows:280px auto}
+  .about-split-photo{grid-row:1}
+  .about-split-text{grid-row:2;padding:2rem 1.5rem}
 }
 
 /* ── SKILLS ── */
@@ -299,7 +319,7 @@ h2{
 .exp-org{font-size:.74rem;color:var(--dark);font-weight:600;margin-bottom:.12rem}
 .exp-loc{font-size:.62rem;color:var(--subtle)}
 .exp-title{font-size:.92rem;font-weight:700;letter-spacing:-.02em;color:var(--dark);margin-bottom:.5rem}
-.exp-logo{height:26px;width:auto;max-width:100px;object-fit:contain;margin-top:.8rem;opacity:.5;filter:grayscale(1)}
+.exp-logo{height:26px;width:auto;max-width:100px;object-fit:contain;margin-top:.8rem;opacity:.85}
 .exp-items{list-style:none;display:flex;flex-direction:column;gap:.38rem}
 .exp-items li{font-size:.74rem;color:var(--muted);line-height:1.75;padding-left:.9rem;position:relative}
 .exp-items li::before{content:'';position:absolute;left:0;top:.62em;width:3px;height:3px;background:var(--hairline);border-radius:50%}
@@ -564,49 +584,43 @@ section.visible{opacity:1;transform:translateY(0)}
   <div class="sec-label">About Me</div>
   <h2>Hi, I'm Yejin</h2>
 
-  <div class="about-photo-row fade">
-    <div class="about-photo-wrap">
-      <img
-        src="photo_samsung.jpg"
-        alt="Yejin at Samsung Medical Center"
-        class="about-photo"
-        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
-      />
-      <div class="about-photo-fallback">
-        <span style="font-size:1.4rem">&#128300;</span>
-        <span style="font-size:.65rem;color:var(--muted);text-align:center;margin-top:.4rem">Samsung Medical Center</span>
-      </div>
-      <div class="about-photo-caption">Samsung Medical Center · Seoul, 2022–23</div>
-    </div>
-    <div class="about-body">
-      <p>I believe <span class="highlight">data has a story</span> — and my job is to find it, tell it, and make it matter. That belief didn't start in a lecture hall. It started in a hospital corridor in Seoul, where I met cancer patients face-to-face to collect clinical data. Looking at the numbers later, I realized each row in a spreadsheet was a person — their pain, their hope, their story. <span class="highlight">That moment changed everything for me.</span></p>
+  <div class="about-split fade">
+    <div class="about-split-text">
+      <div class="about-body">
+        <p>I believe <span class="highlight">data has a story</span> — and my job is to find it, tell it, and make it matter. That belief didn't start in a lecture hall. It started in a hospital corridor in Seoul, where I met cancer patients face-to-face to collect clinical data. Looking at the numbers later, I realized each row in a spreadsheet was a person — their pain, their hope, their story. <span class="highlight">That moment changed everything for me.</span></p>
 
-      <div class="career-timeline">
-        <div class="ct-item">
-          <div class="ct-dot"></div>
-          <div class="ct-year">2018</div>
-          <div class="ct-label">Sungkyunkwan University (SKKU)</div>
-          <div class="ct-desc">B.S. Culture &amp; Technology + Food Science &amp; Biotechnology · started at the intersection of media, music &amp; tech</div>
-        </div>
-        <div class="ct-item">
-          <div class="ct-dot"></div>
-          <div class="ct-year">2022</div>
-          <div class="ct-label">Samsung Medical Center</div>
-          <div class="ct-desc">Clinical Data Analyst · oncology studies (esophageal &amp; breast cancer) · Johns Hopkins-affiliated PIs · real-world patient data</div>
-        </div>
-        <div class="ct-item">
-          <div class="ct-dot"></div>
-          <div class="ct-year">2024</div>
-          <div class="ct-label">M.S. Data Science — TAMUCC, USA</div>
-          <div class="ct-desc">Graduate Fellow · GPA 4.0 · full scholarship · ML, DL, NLP, time-series forecasting · 3× conference speaker</div>
-        </div>
-        <div class="ct-item ct-item--last">
-          <div class="ct-dot ct-dot--accent"></div>
-          <div class="ct-year">2026</div>
-          <div class="ct-label">Now</div>
-          <div class="ct-desc">Thesis submitted to KDD 2026 · M.S. defended · 3-year STEM OPT · open to opportunities across the U.S.</div>
+        <div class="career-timeline">
+          <div class="ct-item">
+            <div class="ct-dot"></div>
+            <div class="ct-year">2018</div>
+            <div class="ct-label">Sungkyunkwan University (SKKU)</div>
+            <div class="ct-desc">B.S. Culture &amp; Technology + Food Science &amp; Biotechnology · started at the intersection of media, music &amp; tech</div>
+          </div>
+          <div class="ct-item">
+            <div class="ct-dot"></div>
+            <div class="ct-year">2022</div>
+            <div class="ct-label">Samsung Medical Center</div>
+            <div class="ct-desc">Clinical Data Analyst · oncology studies (esophageal &amp; breast cancer) · Johns Hopkins-affiliated PIs · real-world patient data</div>
+          </div>
+          <div class="ct-item">
+            <div class="ct-dot"></div>
+            <div class="ct-year">2024</div>
+            <div class="ct-label">M.S. Data Science — TAMUCC, USA</div>
+            <div class="ct-desc">Graduate Fellow · GPA 4.0 · full scholarship · ML, DL, NLP, time-series forecasting · 3× conference speaker</div>
+          </div>
+          <div class="ct-item ct-item--last">
+            <div class="ct-dot ct-dot--accent"></div>
+            <div class="ct-year">2026</div>
+            <div class="ct-label">Now</div>
+            <div class="ct-desc">Thesis submitted to KDD 2026 · M.S. defended · 3-year STEM OPT · open to opportunities across the U.S.</div>
+          </div>
         </div>
       </div>
+    </div>
+    <div class="about-split-photo">
+      <img src="photo_samsung.jpg" alt="Yejin at Samsung Medical Center"
+        onerror="this.style.display='none'"/>
+      <div class="about-photo-caption">Samsung Medical Center · Seoul, 2022–23</div>
     </div>
   </div>
 
@@ -957,7 +971,7 @@ section.visible{opacity:1;transform:translateY(0)}
       </a>
 
       <!-- 4. 10th Coastal Bend -->
-      <a class="pcard fade" href="https://www.linkedin.com/feed/update/urn:li:activity:7449219600996540417/" target="_blank">
+      <div class="pcard fade">
         <div class="pcard-img">
           <img src="photo_coastal_bend_badge.jpg" alt="10th Coastal Bend Conference" style="object-position:center 40%" onerror="this.parentElement.style.background='var(--fill)';this.style.display='none'"/>
         </div>
@@ -966,9 +980,8 @@ section.visible{opacity:1;transform:translateY(0)}
           <div class="pname">10th Coastal Bend Mathematics & Statistics Conference</div>
           <div class="pdesc">Presented updated thesis research at TAMUCC — building on last year's talk with new results, deeper sentiment analysis, and expanded model comparisons.</div>
           <div class="ptechs"><span class="ptech">TAMUCC · Corpus Christi</span><span class="ptech">Statistics</span><span class="ptech">Talk</span></div>
-          <div class="plink">View on LinkedIn →</div>
         </div>
-      </a>
+      </div>
 
       <!-- 5. 9th Coastal Bend -->
       <a class="pcard fade" href="https://www.linkedin.com/posts/yejin-data_timeseriesforecasting-datascience-machinelearning-activity-7314452114418606080-INCR" target="_blank">
@@ -985,18 +998,17 @@ section.visible{opacity:1;transform:translateY(0)}
       </a>
 
       <!-- 6. NMSU/UTEP -->
-      <a class="pcard fade" href="https://www.linkedin.com/in/yejin-data" target="_blank">
+      <div class="pcard fade">
         <div class="pcard-img">
-          <img src="photo_conference.jpg" alt="Joint NMSU/UTEP Conference" style="object-position:center 30%" onerror="this.parentElement.style.background='var(--fill)';this.style.display='none'"/>
+          <img src="photo_nmsu.jpg" alt="Joint NMSU/UTEP Conference" style="object-position:center 35%" onerror="this.parentElement.style.background='var(--fill)';this.style.display='none'"/>
         </div>
         <div class="pcard-body">
           <div class="ptag">Conference Speaker · 2025</div>
           <div class="pname">Joint NMSU/UTEP Mathematics & CS Conference</div>
           <div class="pdesc">Oral presentation on multimodal time-series forecasting with Reddit sentiment — presented thesis research to an interdisciplinary audience of mathematicians and computer scientists.</div>
-          <div class="ptechs"><span class="ptech">NMSU/UTEP</span><span class="ptech">Talk</span></div>
-          <div class="plink">View on LinkedIn →</div>
+          <div class="ptechs"><span class="ptech">NM State</span><span class="ptech">Talk</span></div>
         </div>
-      </a>
+      </div>
 
     </div>
     <div class="carousel-nav">
