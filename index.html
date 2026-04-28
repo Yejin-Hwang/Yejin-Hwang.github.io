@@ -522,6 +522,49 @@ section.visible{opacity:1;transform:translateY(0)}
   .pcard.has-img{grid-template-columns:1fr}
   .pcard-img{min-height:200px}
 }
+
+/* ── MOBILE FIXES ── */
+
+/* Nav: 10 links → horizontal scroll on small screens */
+@media(max-width:700px){
+  nav{
+    justify-content:flex-start;
+    gap:0;
+    padding:0;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+    -ms-overflow-style:none;
+  }
+  nav::-webkit-scrollbar{display:none}
+  nav a{
+    flex-shrink:0;
+    padding:0 1rem;
+    height:44px;
+    display:flex;
+    align-items:center;
+    font-size:.7rem;
+    white-space:nowrap;
+  }
+}
+
+/* Modal stats: 4col → 2col on mobile */
+@media(max-width:600px){
+  .modal-stats-row{grid-template-columns:repeat(2,1fr)}
+  .modal-img-grid{grid-template-columns:1fr}
+}
+
+/* Hero left padding: reduce top on mobile */
+@media(max-width:768px){
+  .hero-left{padding-top:3.5rem}
+}
+
+/* Social / CTA buttons: tighter on very small screens */
+@media(max-width:380px){
+  .hero-socials{gap:.35rem}
+  .social-btn{padding:.4rem .8rem;font-size:.72rem}
+  .btn-primary,.btn-ghost{padding:.6rem 1.2rem;font-size:.8rem}
+}
 </style>
 </head>
 <body>
