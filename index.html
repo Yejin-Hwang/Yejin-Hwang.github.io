@@ -343,9 +343,9 @@ h2{
 }
 .exp-item:last-child{border-bottom:none}
 .exp-meta{padding-top:.1rem}
-.exp-date{font-size:.64rem;color:var(--subtle);font-weight:500;margin-bottom:.3rem;letter-spacing:.01em}
-.exp-org{font-size:.74rem;color:var(--dark);font-weight:600;margin-bottom:.12rem}
-.exp-loc{font-size:.62rem;color:var(--subtle)}
+.exp-date{font-size:.64rem;color:var(--subtle);font-weight:500;margin-bottom:.15rem;letter-spacing:.01em}
+.exp-org{font-size:.74rem;color:var(--dark);font-weight:600;margin-bottom:0}
+.exp-loc{font-size:.62rem;color:var(--subtle);margin-top:.1rem}
 .exp-title{font-size:.92rem;font-weight:700;letter-spacing:-.02em;color:var(--dark);margin-bottom:.5rem}
 .exp-logo{height:26px;width:auto;max-width:100px;object-fit:contain;margin-top:.8rem;opacity:.85}
 .exp-items{list-style:none;display:flex;flex-direction:column;gap:.38rem}
@@ -363,7 +363,7 @@ h2{
     flex-direction:column;
     gap:0;
   }
-  .exp-date{margin-bottom:.3rem}
+  .exp-date{margin-bottom:.15rem}
   .exp-org-row{
     display:flex;
     align-items:center;
@@ -371,7 +371,7 @@ h2{
     gap:.6rem;
   }
   .exp-logo{margin-top:0;height:28px}
-  .exp-loc{margin-top:.2rem}
+  .exp-loc{margin-top:.1rem}
 }
 
 /* ── CERTIFICATIONS ── */
@@ -448,14 +448,22 @@ h2{
 
 /* right: photo panel */
 .beyond-photo-panel{
-  position:relative;overflow:hidden;background:var(--fill2);
+  position:relative;overflow:hidden;background:#1a1a1a;
 }
 .beyond-photo{
   position:absolute;inset:0;
-  width:100%;height:100%;object-fit:cover;
+  width:100%;height:100%;object-fit:cover;object-position:center center;
   opacity:0;transition:opacity .5s cubic-bezier(.22,1,.36,1),transform .5s cubic-bezier(.22,1,.36,1);
   transform:scale(1.04);
 }
+/* default cat photo — show full image without crop */
+#bphoto-default{
+  object-fit:contain;
+  object-position:center center;
+  transform:scale(1);
+  background:#1a1a1a;
+}
+#bphoto-default.active{transform:scale(1)}
 .beyond-photo.active{opacity:1;transform:scale(1)}
 
 /* inline photos only used on mobile — hidden on desktop */
