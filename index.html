@@ -448,7 +448,7 @@ h2{
 
 /* right: photo panel */
 .beyond-photo-panel{
-  position:relative;overflow:hidden;background:#1a1a1a;
+  position:relative;overflow:hidden;background:var(--fill2);
 }
 .beyond-photo{
   position:absolute;inset:0;
@@ -456,12 +456,11 @@ h2{
   opacity:0;transition:opacity .5s cubic-bezier(.22,1,.36,1),transform .5s cubic-bezier(.22,1,.36,1);
   transform:scale(1.04);
 }
-/* default cat photo — show full image without crop */
+/* default cat photo — cover but centered on cat */
 #bphoto-default{
-  object-fit:contain;
-  object-position:center center;
-  transform:scale(1);
-  background:#1a1a1a;
+  object-fit:cover;
+  object-position:center 30%;
+  transform:scale(1.04);
 }
 #bphoto-default.active{transform:scale(1)}
 .beyond-photo.active{opacity:1;transform:scale(1)}
