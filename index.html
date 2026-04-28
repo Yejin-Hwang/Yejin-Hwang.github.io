@@ -48,11 +48,7 @@ nav{
   backdrop-filter:saturate(180%) blur(20px);
   -webkit-backdrop-filter:saturate(180%) blur(20px);
   border-bottom:1px solid rgba(0,0,0,.08);
-  overflow-x:auto;-webkit-overflow-scrolling:touch;
-  scrollbar-width:none;-ms-overflow-style:none;
-  white-space:nowrap;justify-content:flex-start;
 }
-nav::-webkit-scrollbar{display:none}
 nav a{
   font-size:.72rem;letter-spacing:.01em;
   color:var(--dark);text-decoration:none;font-weight:400;
@@ -162,10 +158,10 @@ nav a:hover{opacity:1}
 
 /* mobile hero */
 @media(max-width:768px){
-  #home{grid-template-columns:1fr;grid-template-rows:72vw auto;min-height:unset}
+  #home{grid-template-columns:1fr;grid-template-rows:85vw auto;min-height:unset}
   .hero-left{padding:2.5rem 1.5rem 3rem;grid-row:2}
-  .hero-right{grid-row:1;min-height:72vw}
-  .hero-photo{object-position:center 8%}
+  .hero-right{grid-row:1;min-height:85vw}
+  .hero-photo{object-position:center top}
   .hero-name{font-size:clamp(2.6rem,10vw,4.2rem)}
   .hero-desc{font-size:1rem;max-width:100%}
   .hero-label{margin-bottom:1.2rem}
@@ -246,8 +242,9 @@ h2{
   padding:.25rem .7rem;border-radius:980px;white-space:nowrap;
 }
 @media(max-width:768px){
-  .about-split{grid-template-columns:1fr;grid-template-rows:280px auto}
-  .about-split-photo{grid-row:1}
+  .about-split{grid-template-columns:1fr;grid-template-rows:75vw auto}
+  .about-split-photo{grid-row:1;min-height:75vw}
+  .about-split-photo img{object-position:center 20%}
   .about-split-text{grid-row:2;padding:2rem 1.5rem}
 }
 
@@ -426,9 +423,31 @@ h2{
 .beyond-photo.active{opacity:1;transform:scale(1)}
 
 @media(max-width:700px){
-  .beyond-wrap{grid-template-columns:1fr;grid-template-rows:auto 260px}
-  .beyond-photo-panel{grid-row:1}
-  .beyond-list{grid-row:2}
+  .beyond-wrap{
+    grid-template-columns:1fr;
+    background:transparent;
+    border-radius:0;
+    gap:.6rem;
+    min-height:unset;
+  }
+  .beyond-photo-panel{display:none}
+  .beyond-list{display:flex;flex-direction:column;gap:.6rem}
+  .beyond-item{
+    border-radius:16px;
+    overflow:hidden;
+    background:var(--fill);
+    border-bottom:none;
+  }
+  .beyond-item:last-child{border-bottom:none}
+  .beyond-trigger{padding:1.2rem 1.4rem}
+  .beyond-body-inner{padding:.2rem 1.4rem 1.2rem}
+  .beyond-item-photo{
+    display:block;
+    width:100%;
+    height:52vw;
+    object-fit:cover;
+    object-position:center center;
+  }
 }
 
 /* ── GLOBAL MOBILE ── */
@@ -459,16 +478,9 @@ h2{
   /* Section headers */
   h2{font-size:clamp(1.7rem,7vw,2.4rem)}
 
-  /* Nav: horizontal scroll friendly */
-  nav{gap:1.4rem;padding:0 1rem 0 1rem;justify-content:flex-start}
-  nav a{font-size:.7rem;flex-shrink:0}
-
-  /* Hero CTA buttons */
-  .hero-ctas{flex-direction:column;gap:.5rem}
-  .btn-primary,.btn-ghost{text-align:center}
-
-  /* Social buttons wrap nicely */
-  .hero-socials{gap:.4rem}
+  /* Nav: reduce gap */
+  nav{gap:1.2rem;padding:0 1rem}
+  nav a{font-size:.68rem}
 }
 
 /* ── CONTACT ── */
@@ -513,9 +525,6 @@ footer a:hover{color:var(--dark)}
 .modal-img-caption{font-size:.65rem;color:var(--muted);line-height:1.6;margin-top:.5rem}
 .modal-stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:.6rem;margin:1rem 0 1.4rem}
 .modal-stat{background:var(--fill);border-radius:10px;padding:.8rem .6rem;text-align:center}
-@media(max-width:640px){
-  .modal-stats-row{grid-template-columns:repeat(2,1fr)}
-}
 .modal-stat-num{font-size:1.2rem;font-weight:700;letter-spacing:-.03em;color:var(--dark)}
 .modal-stat-label{font-size:.58rem;color:var(--muted);margin-top:.2rem}
 
@@ -1226,7 +1235,7 @@ section.visible{opacity:1;transform:translateY(0)}
     <!-- left: accordion list -->
     <div class="beyond-list">
 
-      <div class="beyond-item open" data-photo="photo_aesthetic.jpg" onclick="toggleBeyond(this)">
+      <div class="beyond-item" data-photo="photo_aesthetic.jpg" onclick="toggleBeyond(this)">
         <div class="beyond-trigger">
           <div class="beyond-trigger-left">
             <div class="beyond-label">Aesthetics · Fashion · Music</div>
@@ -1234,6 +1243,7 @@ section.visible{opacity:1;transform:translateY(0)}
           </div>
           <div class="beyond-chevron">⌄</div>
         </div>
+        <img class="beyond-item-photo" src="photo_aesthetic.jpg" alt="Aesthetics" style="display:none"/>
         <div class="beyond-body">
           <div class="beyond-body-inner">I like clean design, good visuals, and music that sets the mood. I used to play bass in a university band — these days, I'm more of a listener. K-pop, jazz, house, R&amp;B — I'm always digging for something that just feels right.</div>
         </div>
@@ -1247,6 +1257,7 @@ section.visible{opacity:1;transform:translateY(0)}
           </div>
           <div class="beyond-chevron">⌄</div>
         </div>
+        <img class="beyond-item-photo" src="photo learner.jpg" alt="Learning" style="display:none"/>
         <div class="beyond-body">
           <div class="beyond-body-inner">I started in healthcare, which shaped how I think about impact. That curiosity led me to data and AI — trying to understand complex systems and make them more useful, more human.</div>
         </div>
@@ -1260,6 +1271,7 @@ section.visible{opacity:1;transform:translateY(0)}
           </div>
           <div class="beyond-chevron">⌄</div>
         </div>
+        <img class="beyond-item-photo" src="photo_travel.jpg" alt="Travel" style="display:none"/>
         <div class="beyond-body">
           <div class="beyond-body-inner">Korean, English, Japanese (learning). I like being in new places, hearing different languages, and noticing the small differences in how people think and connect. It's a quiet way of expanding how I see the world.</div>
         </div>
@@ -1485,13 +1497,30 @@ window.toggleBeyond = function(item) {
   const items = document.querySelectorAll('.beyond-item');
   const photos = document.querySelectorAll('.beyond-photo');
   const idx = Array.from(items).indexOf(item);
+  const isMobile = window.innerWidth <= 700;
 
-  items.forEach((el, i) => {
-    el.classList.toggle('open', i === idx);
-  });
-  photos.forEach((ph, i) => {
-    ph.classList.toggle('active', i === idx);
-  });
+  if (isMobile) {
+    // Toggle clicked item; close others
+    const isOpen = item.classList.contains('open');
+    items.forEach((el, i) => {
+      el.classList.remove('open');
+      const inlinePhoto = el.querySelector('.beyond-item-photo');
+      if (inlinePhoto) inlinePhoto.style.display = 'none';
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      const inlinePhoto = item.querySelector('.beyond-item-photo');
+      if (inlinePhoto) inlinePhoto.style.display = 'block';
+    }
+  } else {
+    // Desktop: always open one, switch photo panel
+    items.forEach((el, i) => {
+      el.classList.toggle('open', i === idx);
+    });
+    photos.forEach((ph, i) => {
+      ph.classList.toggle('active', i === idx);
+    });
+  }
 }
 
 // Carousel
