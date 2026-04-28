@@ -352,6 +352,28 @@ h2{
 .exp-items li{font-size:.74rem;color:var(--muted);line-height:1.75;padding-left:.9rem;position:relative}
 .exp-items li::before{content:'';position:absolute;left:0;top:.62em;width:3px;height:3px;background:var(--hairline);border-radius:50%}
 
+@media(max-width:640px){
+  .exp-item{
+    grid-template-columns:1fr;
+    gap:.8rem;
+    padding:1.6rem 0;
+  }
+  .exp-meta{
+    display:flex;
+    flex-direction:column;
+    gap:0;
+  }
+  .exp-date{margin-bottom:.3rem}
+  .exp-org-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:.6rem;
+  }
+  .exp-logo{margin-top:0;height:28px}
+  .exp-loc{margin-top:.2rem}
+}
+
 /* ── CERTIFICATIONS ── */
 .certs-group-label{font-size:.8rem;color:var(--muted);margin-bottom:1.2rem;line-height:1.7}
 .certs-group-label strong{color:var(--dark);font-weight:700}
@@ -387,9 +409,9 @@ h2{
 .beyond-wrap{
   display:grid;grid-template-columns:1fr 1fr;
   gap:0;border-radius:20px;overflow:hidden;
-  background:var(--fill);min-height:420px;
+  background:var(--fill);
 }
-.beyond-list{display:flex;flex-direction:column;justify-content:center}
+.beyond-list{display:flex;flex-direction:column;justify-content:flex-start}
 .beyond-item{
   border-bottom:1px solid var(--border);
   cursor:pointer;
@@ -436,6 +458,9 @@ h2{
 }
 .beyond-photo.active{opacity:1;transform:scale(1)}
 
+/* inline photos only used on mobile — hidden on desktop */
+.beyond-item-photo{display:none}
+
 @media(max-width:700px){
   .beyond-wrap{
     grid-template-columns:1fr;
@@ -456,18 +481,17 @@ h2{
   .beyond-trigger{padding:1.2rem 1.4rem}
   .beyond-body-inner{padding:.2rem 1.4rem 1.2rem}
 
-  /* 이미지는 기본 숨김, open일 때만 표시 */
+  /* 이미지는 기본 display:none (전역), 모바일 open시 block으로 */
   .beyond-item-photo{
-    display:none;
     width:100%;
-    height:54vw;
+    height:80vw;
     object-fit:cover;
     object-position:center center;
+    display:none;
   }
   .beyond-item.open .beyond-item-photo{display:block}
 
-  /* open 시 텍스트+이미지 모두 들어갈 공간 확보 */
-  .beyond-item.open .beyond-body{max-height:600px}
+  .beyond-item.open .beyond-body{max-height:900px}
 }
 
 /* ── GLOBAL MOBILE ── */
@@ -903,9 +927,11 @@ section.visible{opacity:1;transform:translateY(0)}
     <div class="exp-item fade">
       <div class="exp-meta">
         <div class="exp-date">Aug 2024 – May 2026</div>
-        <div class="exp-org">Texas A&M University–Corpus Christi</div>
-        <div class="exp-loc">Corpus Christi, TX</div>
-        <img src="logo_tamucc_nobg.png" alt="TAMUCC" class="exp-logo"/>
+        <div class="exp-org-row">
+          <div class="exp-org">Texas A&M University–Corpus Christi</div>
+          <img src="logo_tamucc_nobg.png" alt="TAMUCC" class="exp-logo"/>
+        </div>
+        <div class="exp-loc">Texas, USA</div>
       </div>
       <div>
         <div class="exp-title">M.S. Data Science <span style="font-size:.7rem;color:var(--accent);font-weight:400">· GPA 4.0 · Full Scholarship</span></div>
@@ -920,9 +946,11 @@ section.visible{opacity:1;transform:translateY(0)}
     <div class="exp-item fade">
       <div class="exp-meta">
         <div class="exp-date">Mar 2017 – Aug 2022</div>
-        <div class="exp-org">Sungkyunkwan University (SKKU)</div>
+        <div class="exp-org-row">
+          <div class="exp-org">Sungkyunkwan University (SKKU)</div>
+          <img src="logo_skku_nobg.png" alt="SKKU" class="exp-logo"/>
+        </div>
         <div class="exp-loc">Seoul &amp; Suwon, Korea</div>
-        <img src="logo_skku_nobg.png" alt="SKKU" class="exp-logo"/>
       </div>
       <div>
         <div class="exp-title">B.S. Culture &amp; Technology <span style="font-size:.7rem;color:var(--muted);font-weight:400">+ Double Major: Food Science &amp; Biotechnology</span></div>
@@ -949,9 +977,11 @@ section.visible{opacity:1;transform:translateY(0)}
     <div class="exp-item fade">
       <div class="exp-meta">
         <div class="exp-date">Sep 2024 – May 2026</div>
-        <div class="exp-org">TAMUCC · AI Lab</div>
-        <div class="exp-loc">Corpus Christi, TX</div>
-        <img src="logo_tamucc_nobg.png" alt="TAMUCC" class="exp-logo"/>
+        <div class="exp-org-row">
+          <div class="exp-org">TAMUCC · AI Lab</div>
+          <img src="logo_tamucc_nobg.png" alt="TAMUCC" class="exp-logo"/>
+        </div>
+        <div class="exp-loc">Texas, USA</div>
       </div>
       <div>
         <div class="exp-title">Graduate Research Assistant / Teaching Assistant</div>
@@ -967,9 +997,11 @@ section.visible{opacity:1;transform:translateY(0)}
     <div class="exp-item fade">
       <div class="exp-meta">
         <div class="exp-date">Aug 2022 – Aug 2023</div>
-        <div class="exp-org">Samsung Medical Center</div>
+        <div class="exp-org-row">
+          <div class="exp-org">Samsung Medical Center</div>
+          <img src="logo_samsung_nobg.png" alt="Samsung Medical Center" class="exp-logo"/>
+        </div>
         <div class="exp-loc">Seoul, Korea</div>
-        <img src="logo_samsung_nobg.png" alt="Samsung Medical Center" class="exp-logo"/>
       </div>
       <div>
         <div class="exp-title">Clinical Data Analyst</div>
@@ -984,9 +1016,11 @@ section.visible{opacity:1;transform:translateY(0)}
     <div class="exp-item fade">
       <div class="exp-meta">
         <div class="exp-date">Sep 2023 – Jun 2024</div>
-        <div class="exp-org">Banpo Fineman Academy</div>
+        <div class="exp-org-row">
+          <div class="exp-org">Banpo Fineman Academy</div>
+          <img src="logo_fineman_nobg.png" alt="Fineman Academy" class="exp-logo"/>
+        </div>
         <div class="exp-loc">Seoul, Korea</div>
-        <img src="logo_fineman_nobg.png" alt="Fineman Academy" class="exp-logo"/>
       </div>
       <div>
         <div class="exp-title">Math Instructor</div>
@@ -1000,9 +1034,11 @@ section.visible{opacity:1;transform:translateY(0)}
     <div class="exp-item fade">
       <div class="exp-meta">
         <div class="exp-date">Mar 2022 – Jul 2022</div>
-        <div class="exp-org">SKKU · CliNE Lab</div>
+        <div class="exp-org-row">
+          <div class="exp-org">SKKU · CliNE Lab</div>
+          <img src="logo_skku_nobg.png" alt="SKKU" class="exp-logo"/>
+        </div>
         <div class="exp-loc">Suwon, Korea</div>
-        <img src="logo_skku_nobg.png" alt="SKKU" class="exp-logo"/>
       </div>
       <div>
         <div class="exp-title">Research Assistant</div>
@@ -1263,8 +1299,8 @@ section.visible{opacity:1;transform:translateY(0)}
           </div>
           <div class="beyond-chevron">⌄</div>
         </div>
-        <img class="beyond-item-photo" src="photo_aesthetic.jpg" alt="Aesthetics"/>
         <div class="beyond-body">
+          <img class="beyond-item-photo" src="photo_aesthetic.jpg" alt="Aesthetics"/>
           <div class="beyond-body-inner">I like clean design, good visuals, and music that sets the mood. I used to play bass in a university band — these days, I'm more of a listener. K-pop, jazz, house, R&amp;B — I'm always digging for something that just feels right.</div>
         </div>
       </div>
@@ -1277,8 +1313,8 @@ section.visible{opacity:1;transform:translateY(0)}
           </div>
           <div class="beyond-chevron">⌄</div>
         </div>
-        <img class="beyond-item-photo" src="photo learner.jpg" alt="Learning"/>
         <div class="beyond-body">
+          <img class="beyond-item-photo" src="photo learner.jpg" alt="Learning"/>
           <div class="beyond-body-inner">I started in healthcare, which shaped how I think about impact. That curiosity led me to data and AI — trying to understand complex systems and make them more useful, more human.</div>
         </div>
       </div>
@@ -1291,8 +1327,8 @@ section.visible{opacity:1;transform:translateY(0)}
           </div>
           <div class="beyond-chevron">⌄</div>
         </div>
-        <img class="beyond-item-photo" src="photo_travel.jpg" alt="Travel"/>
         <div class="beyond-body">
+          <img class="beyond-item-photo" src="photo_travel.jpg" alt="Travel"/>
           <div class="beyond-body-inner">Korean, English, Japanese (learning). I like being in new places, hearing different languages, and noticing the small differences in how people think and connect. It's a quiet way of expanding how I see the world.</div>
         </div>
       </div>
@@ -1301,7 +1337,8 @@ section.visible{opacity:1;transform:translateY(0)}
 
     <!-- right: photo panel -->
     <div class="beyond-photo-panel">
-      <img class="beyond-photo active" id="bphoto-0" src="photo_aesthetic.jpg" alt="Aesthetics"/>
+      <img class="beyond-photo active" id="bphoto-default" src="photo_default.jpg" alt="Default"/>
+      <img class="beyond-photo" id="bphoto-0" src="photo_aesthetic.jpg" alt="Aesthetics"/>
       <img class="beyond-photo" id="bphoto-1" src="photo learner.jpg" alt="Learning"/>
       <img class="beyond-photo" id="bphoto-2" src="photo_travel.jpg" alt="Travel"/>
     </div>
@@ -1516,6 +1553,7 @@ window.scrollConf = function(dir) {
 window.toggleBeyond = function(item) {
   const items = document.querySelectorAll('.beyond-item');
   const photos = document.querySelectorAll('.beyond-photo');
+  const defaultPhoto = document.getElementById('bphoto-default');
   const idx = Array.from(items).indexOf(item);
   const isMobile = window.innerWidth <= 700;
 
@@ -1524,8 +1562,19 @@ window.toggleBeyond = function(item) {
     items.forEach(el => el.classList.remove('open'));
     if (!isOpen) item.classList.add('open');
   } else {
-    items.forEach((el, i) => el.classList.toggle('open', i === idx));
-    photos.forEach((ph, i) => ph.classList.toggle('active', i === idx));
+    const isOpen = item.classList.contains('open');
+    // Close all
+    items.forEach(el => el.classList.remove('open'));
+    photos.forEach(ph => ph.classList.remove('active'));
+    if (!isOpen) {
+      // Open clicked item and show its photo
+      item.classList.add('open');
+      const target = document.getElementById('bphoto-' + idx);
+      if (target) target.classList.add('active');
+    } else {
+      // All closed → show default
+      if (defaultPhoto) defaultPhoto.classList.add('active');
+    }
   }
 }
 
